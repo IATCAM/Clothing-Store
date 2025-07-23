@@ -10,10 +10,10 @@ export interface Iparams{
     searchParams: {}
 }
 
-async function Product({params}: Iparams) {
+async function CasualProduct({params}: Iparams) {
     const {id} = params;
 
-    const result = await fetch(`http://localhost:8000/products/${id}`);
+    const result = await fetch(`http://localhost:8000/casual/${id}`);
     const data = await result.json() as Iproducts;
 
   return (
@@ -95,4 +95,4 @@ async function Product({params}: Iparams) {
   )
 }
 
-export default Product;
+export default CasualProduct;
