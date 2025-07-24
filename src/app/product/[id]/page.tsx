@@ -1,7 +1,9 @@
+import AddToCart from "@/components/addToCart/AddToCart";
 import Button from "@/components/button/Button";
 import ColorSelection from "@/components/colorSelection/ColorSelection";
 import Comments from "@/components/comments/Comments";
 import { Iproducts } from "@/components/newArrivals/NewArrivals";
+import ProductRatingClient from "@/components/productRatingClient/ProductRatingClient";
 import SizeSelector from "@/components/sizeSelector/SizeSelector";
 import Suggest from "@/components/suggest/Suggest";
 
@@ -57,7 +59,14 @@ async function Product({params}: Iparams) {
         <div>
           <div className="mt-5">
             <h1 className="font1 tracking-wider text-2xl pb-3 font-bold leading-7 lg:text-[2.5rem] lg:pb-4">{data.title}</h1>
-            <h3 className="text-sm font-normal pb-3 lg:pb-4 lg:text-base">{data.rate}/<span className="opacity-60">5</span></h3>
+            <div className="flex gap-4">
+              <div>
+                <ProductRatingClient defaultValue={data.rate} productId={parseInt(data.id)} />
+              </div>
+              <div>
+                <h3 className="text-sm font-normal pb-3 lg:pb-4 lg:text-base">{data.rate}/<span className="opacity-60">5</span></h3>
+              </div>
+            </div>
             <h1 className="text-2xl font-bold pb-[1.25rem] lg:text-[2rem]">${data.cost}</h1>
             <p className="text-sm font-normal leading-5 opacity-60 lg:text-base">{data.description}</p>
           </div>
@@ -78,7 +87,7 @@ async function Product({params}: Iparams) {
 
             <div className="flex items-center gap-3 mb-[3.16rem]">
               <Button id={parseInt(data.id)} />
-              <button className="bg-black text-white text-sm font-medium py-4 rounded-[3.87rem] flex-wrap w-full lg:text-base">Add to Cart</button>
+              <AddToCart id={parseInt(data.id)} />
             </div>
           </div>
       </div>
@@ -90,7 +99,6 @@ async function Product({params}: Iparams) {
       <div>
         <Suggest />
       </div>
-
     </div>
   )
 }

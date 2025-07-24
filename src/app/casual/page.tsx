@@ -19,8 +19,10 @@ async function Casual({searchParams}: IbrowseProps) {
   const page = searchParams.page ?? "1";
   const per_page = searchParams.per_page ?? initialCount.toString();
   
-  const result = await fetch(`http://localhost:8000/casual?_page=${page}&_per_page=${per_page}`);
+  const result = await fetch(`http://localhost:8000/products?section=casual&_page=${page}&_per_page=${per_page}`);
   const data = await result.json() as Ipagination;
+  console.log(data);
+  
 
   return (
     <div>

@@ -3,7 +3,7 @@ import { Iproducts } from "../newArrivals/NewArrivals";
 import Products from "../products/Products";
 
 async function TopSelling() {
-  const result = await fetch("http://localhost:8000/products");
+  const result = await fetch("http://localhost:8000/products?section=top");
   const data = (await result.json()) as Iproducts[];
 
   const userAgent = headers().get("user-agent") || "";

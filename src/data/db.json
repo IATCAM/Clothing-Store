@@ -7,6 +7,7 @@
             "image": "https://i.postimg.cc/76nFgbFK/1.png",
             "rate": 4.5,
             "cost": 120,
+            "section": "new",
             "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
         },
         {
@@ -15,6 +16,7 @@
             "image": "https://i.postimg.cc/SRWfXzHK/2.png",
             "rate": 3.5,
             "cost": 240,
+            "section": "new",
             "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
         },
         {
@@ -23,6 +25,7 @@
             "image": "https://i.postimg.cc/vHs1YKhM/3.png",
             "rate": 4.5,
             "cost": 180,
+            "section": "new",
             "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
         },
         {
@@ -31,6 +34,7 @@
             "image": "https://i.postimg.cc/Y0yQVzcj/4.png",
             "rate": 4.5,
             "cost": 130,
+            "section": "new",
             "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
         },
          {
@@ -39,6 +43,7 @@
             "image": "https://i.postimg.cc/76nFgbFK/1.png",
             "rate": 4.5,
             "cost": 120,
+            "section": "top",
             "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
         },
         {
@@ -47,6 +52,7 @@
             "image": "https://i.postimg.cc/SRWfXzHK/2.png",
             "rate": 3.5,
             "cost": 240,
+            "section": "top",
             "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
         },
         {
@@ -55,6 +61,7 @@
             "image": "https://i.postimg.cc/vHs1YKhM/3.png",
             "rate": 4.5,
             "cost": 180,
+            "section": "top",
             "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
         },
         {
@@ -63,6 +70,187 @@
             "image": "https://i.postimg.cc/Y0yQVzcj/4.png",
             "rate": 4.5,
             "cost": 130,
+            "section": "top",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "21",
+            "title": "T-SHIRT WITH TAPE DETAILS",
+            "image": "https://i.postimg.cc/76nFgbFK/1.png",
+            "rate": 4.5,
+            "cost": 120,
+            "section": "new",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "22",
+            "title": "SKINNY FIT JEANS",
+            "image": "https://i.postimg.cc/SRWfXzHK/2.png",
+            "rate": 3.5,
+            "cost": 240,
+            "section": "new",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "23",
+            "title": "CHECKERED SHIRT",
+            "image": "https://i.postimg.cc/vHs1YKhM/3.png",
+            "rate": 4.5,
+            "cost": 180,
+            "section": "new",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "24",
+            "title": "SLEEVE STRIPED T-SHIRT",
+            "image": "https://i.postimg.cc/Y0yQVzcj/4.png",
+            "rate": 4.5,
+            "cost": 130,
+            "section": "new",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+         {
+            "id": "25",
+            "title": "T-SHIRT WITH TAPE DETAILS",
+            "image": "https://i.postimg.cc/76nFgbFK/1.png",
+            "rate": 4.5,
+            "cost": 120,
+            "section": "top",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "26",
+            "title": "SKINNY FIT JEANS",
+            "image": "https://i.postimg.cc/SRWfXzHK/2.png",
+            "rate": 3.5,
+            "cost": 240,
+            "section": "top",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "27",
+            "title": "CHECKERED SHIRT",
+            "image": "https://i.postimg.cc/vHs1YKhM/3.png",
+            "rate": 4.5,
+            "cost": 180,
+            "section": "top",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "28",
+            "title": "SLEEVE STRIPED T-SHIRT",
+            "image": "https://i.postimg.cc/Y0yQVzcj/4.png",
+            "rate": 4.5,
+            "cost": 130,
+            "section": "top",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "9",
+            "title": "T-SHIRT WITH TAPE DETAILS",
+            "image": "https://i.postimg.cc/76nFgbFK/1.png",
+            "rate": 4.5,
+            "cost": 120,
+            "section": "casual",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "10",
+            "title": "SKINNY FIT JEANS",
+            "image": "https://i.postimg.cc/SRWfXzHK/2.png",
+            "rate": 3.5,
+            "cost": 240,
+            "section": "casual",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "11",
+            "title": "CHECKERED SHIRT",
+            "image": "https://i.postimg.cc/vHs1YKhM/3.png",
+            "rate": 4.5,
+            "cost": 180,
+            "section": "casual",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "12",
+            "title": "SLEEVE STRIPED T-SHIRT",
+            "image": "https://i.postimg.cc/Y0yQVzcj/4.png",
+            "rate": 4.5,
+            "cost": 130,
+            "section": "casual",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+         {
+            "id": "13",
+            "title": "T-SHIRT WITH TAPE DETAILS",
+            "image": "https://i.postimg.cc/76nFgbFK/1.png",
+            "rate": 4.5,
+            "cost": 120,
+            "section": "casual",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "14",
+            "title": "SKINNY FIT JEANS",
+            "image": "https://i.postimg.cc/SRWfXzHK/2.png",
+            "rate": 3.5,
+            "cost": 240,
+            "section": "casual",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "15",
+            "title": "CHECKERED SHIRT",
+            "image": "https://i.postimg.cc/vHs1YKhM/3.png",
+            "rate": 4.5,
+            "cost": 180,
+            "section": "casual",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "16",
+            "title": "SLEEVE STRIPED T-SHIRT",
+            "image": "https://i.postimg.cc/Y0yQVzcj/4.png",
+            "rate": 4.5,
+            "cost": 130,
+            "section": "casual",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "17",
+            "title": "T-SHIRT WITH TAPE DETAILS",
+            "image": "https://i.postimg.cc/76nFgbFK/1.png",
+            "rate": 4.5,
+            "cost": 120,
+            "section": "casual",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "18",
+            "title": "SKINNY FIT JEANS",
+            "image": "https://i.postimg.cc/SRWfXzHK/2.png",
+            "rate": 3.5,
+            "cost": 240,
+            "section": "casual",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "19",
+            "title": "CHECKERED SHIRT",
+            "image": "https://i.postimg.cc/vHs1YKhM/3.png",
+            "rate": 4.5,
+            "cost": 180,
+            "section": "casual",
+            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        },
+        {
+            "id": "20",
+            "title": "SLEEVE STRIPED T-SHIRT",
+            "image": "https://i.postimg.cc/Y0yQVzcj/4.png",
+            "rate": 4.5,
+            "cost": 130,
+            "section": "casual",
             "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
         }
     ],
@@ -100,134 +288,21 @@
         }
     ],
 
-     "casual":[
+        "discounts": [
         {
-            "id": "100",
-            "title": "T-SHIRT WITH TAPE DETAILS",
-            "image": "https://i.postimg.cc/76nFgbFK/1.png",
-            "rate": 4.5,
-            "cost": 120,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        "id": "10",
+        "code": "OFF30",
+        "percentage": 30
         },
         {
-            "id": "101",
-            "title": "SKINNY FIT JEANS",
-            "image": "https://i.postimg.cc/SRWfXzHK/2.png",
-            "rate": 3.5,
-            "cost": 240,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        "id": "20",
+        "code": "OFF50",
+        "percentage": 50
         },
         {
-            "id": "102",
-            "title": "CHECKERED SHIRT",
-            "image": "https://i.postimg.cc/vHs1YKhM/3.png",
-            "rate": 4.5,
-            "cost": 180,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "103",
-            "title": "SLEEVE STRIPED T-SHIRT",
-            "image": "https://i.postimg.cc/Y0yQVzcj/4.png",
-            "rate": 4.5,
-            "cost": 130,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-         {
-            "id": "104",
-            "title": "T-SHIRT WITH TAPE DETAILS",
-            "image": "https://i.postimg.cc/76nFgbFK/1.png",
-            "rate": 4.5,
-            "cost": 120,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "105",
-            "title": "SKINNY FIT JEANS",
-            "image": "https://i.postimg.cc/SRWfXzHK/2.png",
-            "rate": 3.5,
-            "cost": 240,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "106",
-            "title": "CHECKERED SHIRT",
-            "image": "https://i.postimg.cc/vHs1YKhM/3.png",
-            "rate": 4.5,
-            "cost": 180,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "107",
-            "title": "SLEEVE STRIPED T-SHIRT",
-            "image": "https://i.postimg.cc/Y0yQVzcj/4.png",
-            "rate": 4.5,
-            "cost": 130,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "108",
-            "title": "T-SHIRT WITH TAPE DETAILS",
-            "image": "https://i.postimg.cc/76nFgbFK/1.png",
-            "rate": 4.5,
-            "cost": 120,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "109",
-            "title": "SKINNY FIT JEANS",
-            "image": "https://i.postimg.cc/SRWfXzHK/2.png",
-            "rate": 3.5,
-            "cost": 240,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "110",
-            "title": "CHECKERED SHIRT",
-            "image": "https://i.postimg.cc/vHs1YKhM/3.png",
-            "rate": 4.5,
-            "cost": 180,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "111",
-            "title": "SLEEVE STRIPED T-SHIRT",
-            "image": "https://i.postimg.cc/Y0yQVzcj/4.png",
-            "rate": 4.5,
-            "cost": 130,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "112",
-            "title": "T-SHIRT WITH TAPE DETAILS",
-            "image": "https://i.postimg.cc/76nFgbFK/1.png",
-            "rate": 4.5,
-            "cost": 120,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "113",
-            "title": "SKINNY FIT JEANS",
-            "image": "https://i.postimg.cc/SRWfXzHK/2.png",
-            "rate": 3.5,
-            "cost": 240,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "114",
-            "title": "CHECKERED SHIRT",
-            "image": "https://i.postimg.cc/vHs1YKhM/3.png",
-            "rate": 4.5,
-            "cost": 180,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
-        },
-        {
-            "id": "115",
-            "title": "SLEEVE STRIPED T-SHIRT",
-            "image": "https://i.postimg.cc/Y0yQVzcj/4.png",
-            "rate": 4.5,
-            "cost": 130,
-            "description": "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style."
+        "id": "30",
+        "code": "OFF70",
+        "percentage": 70
         }
-    ]
+  ]
 }

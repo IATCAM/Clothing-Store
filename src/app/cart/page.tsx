@@ -1,12 +1,50 @@
 "use client"
 
 import CartItem from "@/components/cartItem/CartItem";
+import { Iproducts } from "@/components/newArrivals/NewArrivals";
 import { useShoppingCartContext } from "@/context/ShoppingCartContext";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+interface Idiscounts{
+  id: number,
+  code: string,
+  percentage: number
+}
 
 function Cart() {
 
   const {cartItems} = useShoppingCartContext();
-  console.log(cartItems)
+  
+  const [productData , setProductData] = useState<Iproducts[]>([]);
+  const [discountCode , setDiscountCode] = useState("");
+  const [finalPrice , setFinalPrice] = useState(0);
+  const [discountPrice , setDiscountPrice] = useState(0);
+
+  useEffect(()=>{
+    axios.get(`http://localhost:8000/products`)
+    .then((result)=>{
+      const {data} = result; 
+      setProductData(data);
+    })
+  } , []);
+
+  const handleSubmitDiscount = ()=>{
+    axios.get(`http://localhost:8000/discounts?code=${discountCode}`)
+    .then((result)=>{
+      const data = result.data as Idiscounts[];
+
+      let discountPrice = (totalPrice * data[0].percentage) / 100
+      let finalPrice = totalPrice - discountPrice;
+
+      setFinalPrice(finalPrice);
+      setDiscountPrice(discountPrice);
+    })
+  }
+  let totalPrice = cartItems.reduce((total , item)=>{
+                    let selected = productData.find((product)=> product.id == (item.id).toString());
+                    return(total + (selected?.cost || 0) * item.qty);
+                  } , 0)
 
   return (
     <div className="mb-[11.56rem] mx-4 lg:mx-24 lg:mb-[13.75rem]">
@@ -38,12 +76,12 @@ function Cart() {
             <div className="flex justify-between items-center">
               <div>
                 <h3 className="text-base font-normal opacity-60 lg:text-xl">Subtotal</h3>
-                <h3 className="text-base font-normal opacity-60 lg:text-xl my-5">Discount (-20%)</h3>
+                <h3 className="text-base font-normal opacity-60 lg:text-xl my-5">Discount</h3>
                 <h3 className="text-base font-normal opacity-60 lg:text-xl">Delivery Fee</h3>
               </div>
               <div className="text-end">
-                <h4 className="text-base font-bold lg:text-xl">$565</h4>
-                <h4 className="text-base font-bold text-[#FF3333] lg:text-xl my-5">-$113</h4>
+                <h4 className="text-base font-bold lg:text-xl">${totalPrice}</h4>
+                <h4 className="text-base font-bold text-[#FF3333] lg:text-xl my-5">-${discountPrice}</h4>
                 <h4 className="text-base font-bold lg:text-xl">$15</h4>
               </div>
             </div>
@@ -53,7 +91,7 @@ function Cart() {
 
           <div className="flex justify-between items-center">
             <h3 className="text-base font-normal lg:text-xl">Total</h3>
-            <h4 className="text-xl font-bold lg:text-2xl">$467</h4>
+            <h4 className="text-xl font-bold lg:text-2xl">${finalPrice || totalPrice}</h4>
           </div>
 
           <div className="flex justify-between items-center my-4">
@@ -63,10 +101,10 @@ function Cart() {
                   <path d="M19.2305 10.4047L11.4711 2.64532C11.3264 2.4997 11.1543 2.38424 10.9647 2.30565C10.775 2.22707 10.5717 2.18691 10.3664 2.18751H3.12501C2.87637 2.18751 2.63791 2.28628 2.46209 2.46209C2.28628 2.63791 2.18751 2.87637 2.18751 3.12501V10.3664C2.18691 10.5717 2.22707 10.775 2.30565 10.9647C2.38424 11.1543 2.4997 11.3264 2.64532 11.4711L10.4047 19.2305C10.6977 19.5234 11.0951 19.688 11.5094 19.688C11.9237 19.688 12.3211 19.5234 12.6141 19.2305L19.2305 12.6141C19.5234 12.3211 19.688 11.9237 19.688 11.5094C19.688 11.0951 19.5234 10.6977 19.2305 10.4047ZM11.5094 17.6836L4.06251 10.2344V4.06251H10.2344L17.6813 11.5094L11.5094 17.6836ZM7.81251 6.56251C7.81251 6.80973 7.7392 7.05141 7.60184 7.25697C7.46449 7.46253 7.26927 7.62275 7.04086 7.71736C6.81245 7.81197 6.56112 7.83672 6.31864 7.78849C6.07617 7.74026 5.85344 7.62121 5.67862 7.44639C5.50381 7.27157 5.38476 7.04885 5.33652 6.80637C5.28829 6.56389 5.31305 6.31256 5.40766 6.08415C5.50227 5.85574 5.66248 5.66052 5.86804 5.52317C6.07361 5.38582 6.31528 5.31251 6.56251 5.31251C6.89403 5.31251 7.21197 5.4442 7.44639 5.67862C7.68081 5.91304 7.81251 6.23099 7.81251 6.56251Z" fill="black" fillOpacity="0.4"/>
                 </svg>
               </span>
-              <input className="opacity-60 outline-none" type="text" placeholder="Add promo code" />
+              <input onChange={(e)=>setDiscountCode(e.target.value)} className="opacity-60 outline-none" type="text" placeholder="Add promo code" />
             </div>
             <div>
-              <button className="bg-black text-sm font-medium py-3 px-8 rounded-[3.87rem] text-white cursor-pointer lg:text-base">Apply</button>
+              <button onClick={handleSubmitDiscount} className="bg-black text-sm font-medium py-3 px-8 rounded-[3.87rem] text-white cursor-pointer lg:text-base">Apply</button>
             </div>
           </div>
 
