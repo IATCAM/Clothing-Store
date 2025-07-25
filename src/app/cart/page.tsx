@@ -1,11 +1,10 @@
 "use client"
 
 import CartItem from "@/components/cartItem/CartItem";
-import { Iproducts } from "@/components/newArrivals/NewArrivals";
 import { useShoppingCartContext } from "@/context/ShoppingCartContext";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { Iproducts } from "@/type";
 
 interface Idiscounts{
   id: number,

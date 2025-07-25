@@ -6,7 +6,6 @@ import ProductRatingClient from "@/components/productRatingClient/ProductRatingC
 import SizeSelector from "@/components/sizeSelector/SizeSelector";
 import Suggest from "@/components/suggest/Suggest";
 import { supabase } from "@/lib/supabaseClient";
-import { Iproducts } from "@/type";
 
 export interface Iparams{
     params: {id: string},

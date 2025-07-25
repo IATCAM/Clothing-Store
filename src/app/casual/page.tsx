@@ -1,9 +1,9 @@
 import BrowseItems from "@/components/browseItems/BrowseItems";
 import Filters from "@/components/filters/Filters";
-import { Ipagination } from "@/components/newArrivals/NewArrivals";
 import Pagination from "@/components/pagination/Pagination";
 import { headers } from "next/headers";
 import { supabase } from "@/lib/supabaseClient";
+import { Ipagination } from "@/type";
 
 interface IbrowseProps{
   params: {},
