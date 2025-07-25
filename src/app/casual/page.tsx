@@ -6,14 +6,15 @@ import { supabase } from "@/lib/supabaseClient";
 import { Ipagination } from "@/type";
 
 interface IbrowseProps{
-  params: {},
+  params: Record<string, any>,
   searchParams: {page?: string , per_page?: string}
 }
 
 
 async function Casual({searchParams}: IbrowseProps) {
 
-  const userAgent = headers().get("user-agent") || "";
+  const headersList = await headers(); 
+  const userAgent = headersList.get("user-agent") || "";
   const isDesktop = userAgent.includes("Windows") || userAgent.includes("Mac");
   const initialCount = isDesktop ? 9 : 6;
 

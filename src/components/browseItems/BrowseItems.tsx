@@ -11,7 +11,7 @@ interface IBrowseItems{
 
 function BrowseItems({data , initialCount}: IBrowseItems) {
 
-    const [showAll, setShowAll] = useState(false);
+    const [showAll] = useState(false);
     const visibleProducts = showAll ? data : data.slice(0, initialCount);
   return (
     <>

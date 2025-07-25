@@ -35,7 +35,7 @@ export const ShoppingCartContextProvider = ({children}: IShoppingCartContextProv
 
     const handleIncreaseQty = (id: number)=>{
         setCartItems((currentItems)=>{
-            let isProductExist = currentItems.find((item)=> item.id == id) == null;
+            const isProductExist = currentItems.find((item)=> item.id == id) == null;
             if(isProductExist){
                 return [...currentItems , {id: id , qty: 1}];
             }
@@ -58,7 +58,7 @@ export const ShoppingCartContextProvider = ({children}: IShoppingCartContextProv
 
     const handleDecreaseQty = (id: number)=>{
         setCartItems((currentItems)=>{
-            let isLastOne = currentItems.find((item)=> item.id == id)?.qty == 1;
+            const isLastOne = currentItems.find((item)=> item.id == id)?.qty == 1;
             if(isLastOne){
                 return(currentItems.filter((item)=> item.id != id));
             }
