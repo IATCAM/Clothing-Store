@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react";
-import { Iproducts } from "../newArrivals/NewArrivals";
 import Link from "next/link";
+import { Iproducts } from "@/type";
 
 interface IBrowseItems{
     data: Iproducts[],

@@ -3,9 +3,9 @@
 import { supabase } from "@/lib/supabaseClient";
 import { useShoppingCartContext } from "@/context/ShoppingCartContext";
 import Button, { IaddProduct } from "../button/Button";
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { Iproducts } from "../newArrivals/NewArrivals";
+import { Iproducts } from "@/type";
+
 
 function CartItem({id}: IaddProduct) {
 
