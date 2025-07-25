@@ -49,7 +49,7 @@ function Cart() {
 
 
   const handleSubmitDiscount = async () => {
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("discounts")
       .select("*")
       .eq("code", discountCode);

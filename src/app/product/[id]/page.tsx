@@ -9,7 +9,7 @@ import { supabase } from "@/lib/supabaseClient";
 
 export interface Iparams{
     params: {id: string},
-    searchParams: Record<string, any>
+    searchParams: {page?: string , per_page?: string}
 }
 
 async function Product({params}: Iparams) {
