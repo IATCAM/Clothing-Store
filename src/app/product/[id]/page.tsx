@@ -2,10 +2,11 @@ import AddToCart from "@/components/addToCart/AddToCart";
 import Button from "@/components/button/Button";
 import ColorSelection from "@/components/colorSelection/ColorSelection";
 import Comments from "@/components/comments/Comments";
-import { Iproducts } from "@/components/newArrivals/NewArrivals";
 import ProductRatingClient from "@/components/productRatingClient/ProductRatingClient";
 import SizeSelector from "@/components/sizeSelector/SizeSelector";
 import Suggest from "@/components/suggest/Suggest";
+import { supabase } from "@/lib/supabaseClient";
+import { Iproducts } from "@/type";
 
 export interface Iparams{
     params: {id: string},
@@ -15,8 +16,20 @@ export interface Iparams{
 async function Product({params}: Iparams) {
     const {id} = params;
 
-    const result = await fetch(`http://localhost:8000/products/${id}`);
-    const data = await result.json() as Iproducts;
+    // const result = await fetch(`http://localhost:8000/products/${id}`);
+    // const data = await result.json() as Iproducts;
+
+    const { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .eq("id", Number(id))
+      .single();
+
+    if (error) {
+      console.error("Error fetching product:", error);
+      // می‌تونی اینجا رندر خطا یا کامپوننت جایگزین قرار بدی
+      return <div>Product not found</div>;
+    }
 
   return (
     <div className="mx-4 lg:mx-24 mb-[11.56rem] lg:mb-42">

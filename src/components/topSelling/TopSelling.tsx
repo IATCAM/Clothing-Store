@@ -1,12 +1,25 @@
 import { headers } from "next/headers";
-import { Iproducts } from "../newArrivals/NewArrivals";
 import Products from "../products/Products";
+import { supabase } from "@/lib/supabaseClient";
 
 async function TopSelling() {
-  const result = await fetch("http://localhost:8000/products?section=top");
-  const data = (await result.json()) as Iproducts[];
+  // const result = await fetch("http://localhost:8000/products?section=top");
+  // const data = (await result.json()) as Iproducts[];
 
-  const userAgent = headers().get("user-agent") || "";
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("section", "top");
+
+    if (error) {
+      console.error("Supabase fetch error:", error.message);
+      return <p className="text-center mt-10">Error loading data</p>;
+    }
+
+    console.log("Fetched data:", data);
+
+  const headersList = await headers(); 
+  const userAgent = headersList.get("user-agent") || "";
   const isDesktop = userAgent.includes("Windows") || userAgent.includes("Mac");
   const initialCount = isDesktop ? 4 : 2;
   return (

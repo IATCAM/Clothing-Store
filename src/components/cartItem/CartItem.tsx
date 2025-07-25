@@ -1,5 +1,6 @@
 "use client"
 
+import { supabase } from "@/lib/supabaseClient";
 import { useShoppingCartContext } from "@/context/ShoppingCartContext";
 import Button, { IaddProduct } from "../button/Button";
 import axios from "axios";
@@ -12,15 +13,34 @@ function CartItem({id}: IaddProduct) {
 
   const [productData , setProductData] = useState({} as Iproducts);
 
-  useEffect(()=>{
-    axios.get(`http://localhost:8000/products/${id}`)
-    .then((result)=>{
-      const {data} = result;
-      setProductData(data);
-      console.log(setProductData(data));
+  // useEffect(()=>{
+  //   axios.get(`http://localhost:8000/products/${id}`)
+  //   .then((result)=>{
+  //     const {data} = result;
+  //     setProductData(data);
+  //     console.log(setProductData(data));
       
-    })
-  } , [])
+  //   })
+  // } , [])
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+      if (error) {
+        console.error("Error fetching product:", error.message);
+      } else {
+        setProductData(data);
+      }
+    };
+
+    fetchData();
+  }, [id]);
 
   return (
     <div>

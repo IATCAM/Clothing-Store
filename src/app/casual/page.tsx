@@ -3,6 +3,7 @@ import Filters from "@/components/filters/Filters";
 import { Ipagination } from "@/components/newArrivals/NewArrivals";
 import Pagination from "@/components/pagination/Pagination";
 import { headers } from "next/headers";
+import { supabase } from "@/lib/supabaseClient";
 
 interface IbrowseProps{
   params: {},
@@ -19,9 +20,35 @@ async function Casual({searchParams}: IbrowseProps) {
   const page = searchParams.page ?? "1";
   const per_page = searchParams.per_page ?? initialCount.toString();
   
-  const result = await fetch(`http://localhost:8000/products?section=casual&_page=${page}&_per_page=${per_page}`);
-  const data = await result.json() as Ipagination;
-  console.log(data);
+  // const result = await fetch(`http://localhost:8000/products?section=casual&_page=${page}&_per_page=${per_page}`);
+  // const data = await result.json() as Ipagination;
+  // console.log(data);
+
+
+  const from = (Number(page) - 1) * Number(per_page);
+  const to = from + Number(per_page) - 1;
+
+  const { data: items, count, error } = await supabase
+    .from("products")
+    .select("*", { count: "exact" })
+    .eq("section", "casual")
+    .range(from, to);
+
+  if (error) {
+    console.error("Supabase error:", error);
+    return null;
+  }
+
+  const data: Ipagination = {
+    data: items ?? [],
+    pages: count ? Math.ceil(count / Number(per_page)) : 1,
+    first: 1,
+    last: count ? Math.ceil(count / Number(per_page)) : 1,
+    prev: Number(page) > 1 ? Number(page) - 1 : null,
+    next: count && Number(page) < Math.ceil(count / Number(per_page)) ? Number(page) + 1 : null,
+    items: count ?? 0,
+  };
+  
   
 
   return (

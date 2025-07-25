@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ITestimonial } from "../testimonial/Testimonial";
+import { supabase } from "@/lib/supabaseClient";
+import { ITestimonial } from "@/type";
 
 const tabs = ["Product Details", "Rating & Reviews", "FAQs"];
 
@@ -11,19 +12,36 @@ function Comments() {
   const [visibleCount, setVisibleCount] = useState(6);
 
   
-  useEffect(()=>{
-    const fetchReviews = async () => {
-      try {
-        const result = await fetch("http://localhost:8000/testimonial");
-        const data = (await result.json()) as ITestimonial[];
-        setReviews(data);
-      }
-      catch (error){
-        console.error("Failed to fetch reviews:", error);
-      }
-    };
-    fetchReviews();
-  }, []);
+  // useEffect(()=>{
+  //   const fetchReviews = async () => {
+  //     try {
+  //       const result = await fetch("http://localhost:8000/testimonial");
+  //       const data = (await result.json()) as ITestimonial[];
+  //       setReviews(data);
+  //     }
+  //     catch (error){
+  //       console.error("Failed to fetch reviews:", error);
+  //     }
+  //   };
+  //   fetchReviews();
+  // }, []);
+
+
+  useEffect(() => {
+  const fetchReviews = async () => {
+    const { data, error } = await supabase
+      .from("testimonials")
+      .select("*");
+
+    if (error) {
+      console.error("Failed to fetch reviews:", error.message);
+    } else {
+      setReviews(data);
+    }
+  };
+
+  fetchReviews();
+}, []);
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768;

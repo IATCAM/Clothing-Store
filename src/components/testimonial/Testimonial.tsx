@@ -5,20 +5,33 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Swiper as SwiperType } from "swiper";
 import "swiper/css";
+import { supabase } from "@/lib/supabaseClient";
+import { ITestimonial } from "@/type";
 
-export interface ITestimonial {
-  id: string;
-  name: string;
-  comment: string;
-}
+
 
 function Testimonial() {
   const [testimonials, setTestimonials] = useState<ITestimonial[]>([]);
 
+  // useEffect(() => {
+  //   fetch("http://localhost:8000/testimonial")
+  //     .then((res) => res.json())
+  //     .then((data) => setTestimonials(data));
+  // }, []);
+
   useEffect(() => {
-    fetch("http://localhost:8000/testimonial")
-      .then((res) => res.json())
-      .then((data) => setTestimonials(data));
+    const fetchTestimonials = async () => {
+      const { data, error } = await supabase.from("testimonials").select("*");
+
+      if (error) {
+        console.error("Error fetching testimonials:", error.message);
+        return;
+      }
+
+      setTestimonials(data || []);
+    };
+
+    fetchTestimonials();
   }, []);
 
   const swiperRef = useRef<SwiperType | null>(null);

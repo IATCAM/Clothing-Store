@@ -1,31 +1,23 @@
 import { headers } from "next/headers";
 import Products from "../products/Products";
-
-export interface Iproducts{
-  id: string,
-  title: string,
-  image: string,
-  rate: number,
-  cost: number,
-  description: string
-}
-
-export interface Ipagination{
-  first: number | null,
-  items: number | null,
-  last: number | null,
-  next: number | null,
-  pages: number,
-  prev: number | null,
-  data: Iproducts[]
-}
+import { supabase } from "@/lib/supabaseClient";
 
 async function NewArrivals() {
-  const result = await fetch("http://localhost:8000/products?section=new")
-  const data = await (result.json()) as Iproducts[];
+  // const result = await fetch("http://localhost:8000/products?section=new")
+  // const data = await (result.json()) as Iproducts[];
 
+  const { data, error } = await supabase
+    .from("products")  // ← نام جدول در Supabase
+    .select("*")
+    .eq("section", "new");
+
+  if (error) {
+    console.error("Error fetching products:", error.message);
+    return <div>Error loading products</div>;
+  }
   
-  const userAgent = headers().get("user-agent") || "";
+  const headersList = await headers(); 
+  const userAgent = headersList.get("user-agent") || "";
   const isDesktop = userAgent.includes("Windows") || userAgent.includes("Mac");
   const initialCount = isDesktop ? 4 : 2;
 

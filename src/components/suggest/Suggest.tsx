@@ -4,18 +4,36 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Link from "next/link";
-import { Iproducts } from "../newArrivals/NewArrivals";
+import { supabase } from "@/lib/supabaseClient";
+import { Iproducts } from "@/type";
 
 function Suggest() {
   const [data, setData] = useState<Iproducts[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    fetch("http://localhost:8000/products")
-      .then((res) => res.json())
-      .then((json) => setData(json))
-      .catch((err) => console.error("Fetch error:", err));
+  // useEffect(() => {
+  //   fetch("http://localhost:8000/products")
+  //     .then((res) => res.json())
+  //     .then((json) => setData(json))
+  //     .catch((err) => console.error("Fetch error:", err));
+  // }, []);
+
+
+   useEffect(() => {
+    async function fetchData() {
+      const { data, error } = await supabase.from("products").select("*");
+
+      if (error) {
+        console.error("Supabase fetch error:", error.message);
+        return;
+      }
+
+      setData(data || []);
+    }
+
+    fetchData();
   }, []);
+
 
   // شناسایی حالت موبایل
   useEffect(() => {

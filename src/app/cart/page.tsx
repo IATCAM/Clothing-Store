@@ -5,6 +5,7 @@ import { Iproducts } from "@/components/newArrivals/NewArrivals";
 import { useShoppingCartContext } from "@/context/ShoppingCartContext";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 
 interface Idiscounts{
   id: number,
@@ -21,26 +22,52 @@ function Cart() {
   const [finalPrice , setFinalPrice] = useState(0);
   const [discountPrice , setDiscountPrice] = useState(0);
 
-  useEffect(()=>{
-    axios.get(`http://localhost:8000/products`)
-    .then((result)=>{
-      const {data} = result; 
-      setProductData(data);
-    })
-  } , []);
+  // useEffect(()=>{
+  //   axios.get(`http://localhost:8000/products`)
+  //   .then((result)=>{
+  //     const {data} = result; 
+  //     setProductData(data);
+  //   })
+  // } , []);
 
-  const handleSubmitDiscount = ()=>{
-    axios.get(`http://localhost:8000/discounts?code=${discountCode}`)
-    .then((result)=>{
-      const data = result.data as Idiscounts[];
+   useEffect(() => {
+    const fetchProducts = async () => {
+      const { data, error } = await supabase.from("products").select("*");
+      if (!error && data) setProductData(data as Iproducts[]);
+    };
 
-      let discountPrice = (totalPrice * data[0].percentage) / 100
-      let finalPrice = totalPrice - discountPrice;
+    fetchProducts();
+  }, []);
 
-      setFinalPrice(finalPrice);
-      setDiscountPrice(discountPrice);
-    })
-  }
+  // const handleSubmitDiscount = ()=>{
+  //   axios.get(`http://localhost:8000/discounts?code=${discountCode}`)
+  //   .then((result)=>{
+  //     const data = result.data as Idiscounts[];
+
+  //     let discountPrice = (totalPrice * data[0].percentage) / 100
+  //     let finalPrice = totalPrice - discountPrice;
+
+  //     setFinalPrice(finalPrice);
+  //     setDiscountPrice(discountPrice);
+  //   })
+  // }
+
+
+  const handleSubmitDiscount = async () => {
+    const { data, error } = await supabase
+      .from("discounts")
+      .select("*")
+      .eq("code", discountCode);
+
+    if (data && data.length > 0) {
+      const discount = data[0];
+      const discountValue = (totalPrice * discount.percentage) / 100;
+      setDiscountPrice(discountValue);
+      setFinalPrice(totalPrice - discountValue);
+    }
+  };
+  
+
   let totalPrice = cartItems.reduce((total , item)=>{
                     let selected = productData.find((product)=> product.id == (item.id).toString());
                     return(total + (selected?.cost || 0) * item.qty);
