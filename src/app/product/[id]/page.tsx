@@ -7,16 +7,16 @@ import SizeSelector from "@/components/sizeSelector/SizeSelector";
 import Suggest from "@/components/suggest/Suggest";
 import { supabase } from "@/lib/supabaseClient";
 
-export interface props{
-    // params: {id: string},
-    // searchParams: {page?: string , per_page?: string}
+// export interface props{
+//     params: {id: string},
+//     searchParams: {page?: string , per_page?: string}
 
-  params: Record<string, string>;
-  searchParams: Record<string, string | string[] | undefined>;
-}
+//   params: Record<string, string>;
+//   searchParams: Record<string, string | string[] | undefined>;
+// }
 
-async function Product({params}: props) {
-    const {id} = params;
+async function Product({params}: {params:Promise<{id: string}>}) {
+    const {id} = await params;
 
     // const result = await fetch(`http://localhost:8000/products/${id}`);
     // const data = await result.json() as Iproducts;
