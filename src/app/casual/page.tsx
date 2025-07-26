@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { Ipagination } from "@/type";
 
 interface IbrowseProps{
-  params: {id: string},
+  // params: {id: string},
   searchParams: {page?: string , per_page?: string}
 }
 
