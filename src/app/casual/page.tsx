@@ -7,11 +7,11 @@ import { Ipagination } from "@/type";
 
 interface Iprops{
   // params: {id: string},
-  // searchParams: {page?: string , per_page?: string}
+  searchParams: Promise<{page?: string , per_page?: string}>
   
   // params: Record<string, string>;
   // searchParams: Record<string, string | string[] | undefined>;
-  searchParams?: { [key: string]: string | string[] | undefined };
+  // searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 
