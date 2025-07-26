@@ -18,27 +18,25 @@ interface SearchParamsType{
 //     per_page?: string | string[];
 //     [key: string]: string | string[] | undefined;
 //   };
-  [key: string]: string | string[] | undefined;
+searchParams: Promise<{page?: string , per_page?: string}>
 }
 
 
-async function Casual({
-  searchParams,
-}: {
-  searchParams?: SearchParamsType;
-}) {
+async function Casual({searchParams}: SearchParamsType) {
 
   const headersList = await headers(); 
   const userAgent = headersList.get("user-agent") || "";
   const isDesktop = userAgent.includes("Windows") || userAgent.includes("Mac");
   const initialCount = isDesktop ? 9 : 6;
 
-  // const page = searchParams.page ?? "1";
-  // const per_page = searchParams.per_page ?? initialCount.toString();
+    const resolvedSearchParams = await searchParams;
+
+  const page = resolvedSearchParams.page ?? "1";
+  const per_page = resolvedSearchParams.per_page ?? initialCount.toString();
 
 
-  const page = Array.isArray(searchParams?.page) ? searchParams?.page[0] : searchParams?.page ?? "1";
-  const per_page = Array.isArray(searchParams?.per_page) ? searchParams?.per_page[0] : searchParams?.per_page ?? initialCount.toString();
+//   const page =  Array.isArray(searchParams?.page) ? searchParams?.page[0] : searchParams?.page ?? "1";
+//   const per_page =  Array.isArray(searchParams?.per_page) ? searchParams?.per_page[0] : searchParams?.per_page ?? initialCount.toString();
   
   // const result = await fetch(`http://localhost:8000/products?section=casual&_page=${page}&_per_page=${per_page}`);
   // const data = await result.json() as Ipagination;
