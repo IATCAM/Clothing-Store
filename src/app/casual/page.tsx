@@ -7,7 +7,8 @@ import { Ipagination } from "@/type";
 
 interface props{
   // params: {id: string},
-  searchParams: {page?: string , per_page?: string}
+  // searchParams: {page?: string , per_page?: string}
+  searchParams?: Record<string, string | string[] | undefined>;
 }
 
 
@@ -18,8 +19,12 @@ async function Casual({searchParams}: props) {
   const isDesktop = userAgent.includes("Windows") || userAgent.includes("Mac");
   const initialCount = isDesktop ? 9 : 6;
 
-  const page = searchParams.page ?? "1";
-  const per_page = searchParams.per_page ?? initialCount.toString();
+  // const page = searchParams.page ?? "1";
+  // const per_page = searchParams.per_page ?? initialCount.toString();
+
+
+  const page = Array.isArray(searchParams?.page) ? searchParams?.page[0] : searchParams?.page ?? "1";
+  const per_page = Array.isArray(searchParams?.per_page) ? searchParams?.per_page[0] : searchParams?.per_page ?? initialCount.toString();
   
   // const result = await fetch(`http://localhost:8000/products?section=casual&_page=${page}&_per_page=${per_page}`);
   // const data = await result.json() as Ipagination;
