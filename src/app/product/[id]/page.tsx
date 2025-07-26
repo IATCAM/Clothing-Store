@@ -8,8 +8,7 @@ import Suggest from "@/components/suggest/Suggest";
 import { supabase } from "@/lib/supabaseClient";
 
 export interface props{
-    // params: {id: string},
-    params: any
+    params: {id: string | number},
     // searchParams: {page?: string , per_page?: string}
 }
 
