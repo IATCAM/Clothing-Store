@@ -5,13 +5,13 @@ import { headers } from "next/headers";
 import { supabase } from "@/lib/supabaseClient";
 import { Ipagination } from "@/type";
 
-interface IbrowseProps{
+interface props{
   // params: {id: string},
   searchParams: {page?: string , per_page?: string}
 }
 
 
-async function Casual({searchParams}: IbrowseProps) {
+async function Casual({searchParams}: props) {
 
   const headersList = await headers(); 
   const userAgent = headersList.get("user-agent") || "";
