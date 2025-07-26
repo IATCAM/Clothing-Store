@@ -64,7 +64,7 @@ function Cart() {
   
 
   const totalPrice = cartItems.reduce((total , item)=>{
-                    let selected = productData.find((product)=> product.id == (item.id).toString());
+                    const selected = productData.find((product)=> product.id == (item.id).toString());
                     return(total + (selected?.cost || 0) * item.qty);
                   } , 0)
 
