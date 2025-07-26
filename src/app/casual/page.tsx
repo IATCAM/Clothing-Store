@@ -10,7 +10,8 @@ interface props{
   // searchParams: {page?: string , per_page?: string}
   
   params: Record<string, string>;
-  searchParams: Record<string, string | string[] | undefined>;
+  // searchParams: Record<string, string | string[] | undefined>;
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 
