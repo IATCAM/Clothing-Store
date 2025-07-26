@@ -7,8 +7,8 @@ import { Ipagination } from "@/type";
 
 interface props{
   // params: {id: string},
-  // searchParams: {page?: string , per_page?: string}
-  searchParams?: Record<string, string | undefined>;
+  searchParams: {page?: string , per_page?: string}
+  // searchParams?: Record<string, string | string[] | undefined>;
 }
 
 
