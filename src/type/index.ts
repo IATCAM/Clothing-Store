@@ -7,7 +7,7 @@ export interface Iproducts{
   section: string,
   description: string
 }
-
+ 
 export interface Ipagination{
   first: number | null,
   items: number | null,
