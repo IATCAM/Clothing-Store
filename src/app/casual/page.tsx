@@ -19,12 +19,14 @@ interface Iprops{
 //     [key: string]: string | string[] | undefined;
 //   };
   
-
- searchParams?: Record<string, string | string[] | undefined>;
 }
 
 
-async function Casual({searchParams}: Iprops) {
+async function Casual({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined }
+}) {
 
   const headersList = await headers(); 
   const userAgent = headersList.get("user-agent") || "";
