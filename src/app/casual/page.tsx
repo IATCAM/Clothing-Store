@@ -5,17 +5,17 @@ import { headers } from "next/headers";
 import { supabase } from "@/lib/supabaseClient";
 import { Ipagination } from "@/type";
 
-interface props{
+interface Iprops{
   // params: {id: string},
   // searchParams: {page?: string , per_page?: string}
   
-  params: Record<string, string>;
+  // params: Record<string, string>;
   // searchParams: Record<string, string | string[] | undefined>;
   searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 
-async function Casual({searchParams}: props) {
+async function Casual({searchParams}: Iprops) {
 
   const headersList = await headers(); 
   const userAgent = headersList.get("user-agent") || "";
