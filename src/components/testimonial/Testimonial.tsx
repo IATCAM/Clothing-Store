@@ -65,7 +65,7 @@ function Testimonial() {
         modules={[Navigation]}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         navigation={false}
-        loop={true}
+        loop={false}
         spaceBetween={40}
         centeredSlides={false}
         slidesPerView={1.2}

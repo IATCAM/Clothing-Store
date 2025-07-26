@@ -24,8 +24,8 @@ export interface ITestimonial {
   comment: string;
 }
 
-export interface Idiscounts{
-  id: number,
-  code: string,
-  percentage: number
-}
+// export interface Idiscounts{
+//   id: number,
+//   code: string,
+//   percentage: number
+// }
