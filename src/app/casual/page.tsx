@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 import { supabase } from "@/lib/supabaseClient";
 import { Ipagination } from "@/type";
 
-// interface Iprops{
+interface SearchParamsType{
   // params: {id: string},
   // searchParams: {page?: string , per_page?: string}
   
@@ -18,14 +18,14 @@ import { Ipagination } from "@/type";
 //     per_page?: string | string[];
 //     [key: string]: string | string[] | undefined;
 //   };
-  
-// }
+  [key: string]: string | string[] | undefined;
+}
 
 
 async function Casual({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined }
+  searchParams?: SearchParamsType;
 }) {
 
   const headersList = await headers(); 
