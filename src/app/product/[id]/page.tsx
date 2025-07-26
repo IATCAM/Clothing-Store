@@ -7,12 +7,12 @@ import SizeSelector from "@/components/sizeSelector/SizeSelector";
 import Suggest from "@/components/suggest/Suggest";
 import { supabase } from "@/lib/supabaseClient";
 
-export interface Iparams{
-    // params: {id: string},
+export interface props{
+    params: {id: string},
     searchParams: {page?: string , per_page?: string}
 }
 
-async function Product({params}: Iparams) {
+async function Product({params}: props) {
     const {id} = params;
 
     // const result = await fetch(`http://localhost:8000/products/${id}`);
