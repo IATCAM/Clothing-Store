@@ -6,8 +6,8 @@ import { Ipagination } from "@/type";
 import FilterWrapper from "@/components/filterWrapper/FilterWrapper";
 
 interface Props {
-  params: { style?: string };
-  searchParams: { page?: string; per_page?: string; type?: string };
+  params: { style: string };
+  searchParams?: { page: string; per_page: string; type: string[] | undefined };
 }
 
 export default async function StylePage({ params, searchParams }: Props) {
