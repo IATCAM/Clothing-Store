@@ -44,7 +44,7 @@ if (type) {
   query = query.eq("type", type);
 }
 
-const { data: items, count, error } = await query.range(from, to);
+const { data: items, count } = await query.range(from, to);
 
 
   const data: Ipagination = {
