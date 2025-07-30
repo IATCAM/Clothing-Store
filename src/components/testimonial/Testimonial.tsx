@@ -76,7 +76,7 @@ function Testimonial() {
         }}>
         {testimonials.map((item) => (
           <SwiperSlide key={item.id} className="group transition-all duration-300">
-            <div className="border border-[#0000001a] rounded-[1.25rem] p-6 w-[22.37rem] h-[11.63rem] lg:px-8 lg:py-[1.75rem] lg:w-[25rem] lg:h-[14.97rem]">
+            <div className="border border-[#0000001a] rounded-[1.25rem] cursor-grabbing p-6 w-[22.37rem] h-[11.63rem] lg:px-8 lg:py-[1.75rem] lg:w-[25rem] lg:h-[14.97rem]">
                 <h3 className="text-base font-bold leading-[1.37rem] lg:text-xl flex items-center">
                     {item.name} 
                     <span className="pl-1 lg:w-6 lg:h-6">

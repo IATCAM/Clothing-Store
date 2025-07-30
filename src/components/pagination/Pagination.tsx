@@ -1,12 +1,13 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
 
 function Pagination({ pageCount }: { pageCount: number }) {
   const router = useRouter();
   const [perPage, setPerPage] = useState(9);
+  const pathname = usePathname();
 
   useEffect(() => {
     const isMobile = window.innerWidth <= 768;
@@ -15,7 +16,7 @@ function Pagination({ pageCount }: { pageCount: number }) {
 
   const handlePageClick = (e: { selected: number }) => {
     const page = e.selected + 1;
-    router.push(`/casual?page=${page}&per_page=${perPage}`);
+    router.push(`${pathname}?page=${page}&per_page=${perPage}`);
   };
 
   return (

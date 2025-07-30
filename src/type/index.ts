@@ -4,7 +4,9 @@ export interface Iproducts{
   image: string,
   rate: number,
   cost: number,
-  section: string,
+  section: string | null,
+  type: string,
+  style: string | null,
   description: string
 }
  

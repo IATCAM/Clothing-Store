@@ -16,7 +16,7 @@ function Navbar() {
             </svg>
         </button>
         <Link href="/">
-          <button className='font1 text-[1.57rem]'>SHOP.CO</button>
+          <button className='font1 text-[1.57rem] cursor-pointer'>SHOP.CO</button>
         </Link>
       </div>
 
