@@ -5,13 +5,13 @@ import { supabase } from "@/lib/supabaseClient";
 import { Ipagination } from "@/type";
 import FilterWrapper from "@/components/filterWrapper/FilterWrapper";
 
-export interface Props {
-  params: { style: string };
-  searchParams?: { page?: string; per_page?: string; type?: string };
+interface Props {
+  params: { style?: string };
+  searchParams: { page?: string; per_page?: string; type?: string };
 }
 
 export default async function StylePage({ params, searchParams }: Props) {
-  const headersList = await headers();
+  const headersList = await headers(); 
   const userAgent = headersList.get("user-agent") || "";
   const isDesktop = userAgent.includes("Windows") || userAgent.includes("Mac");
   const initialCount = isDesktop ? 9 : 6;
