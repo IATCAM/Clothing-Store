@@ -40,11 +40,11 @@ export default async function StylePage({ params, searchParams }: Props) {
   .select("*", { count: "exact" })
   .eq("style", params.style);
 
-if (type) {
-  query = query.eq("type", type);
-}
+  if (type) {
+    query = query.eq("type", type);
+  }
 
-const { data: items, count } = await query.range(from, to);
+  const { data: items, count } = await query.range(from, to);
 
 
   const data: Ipagination = {
