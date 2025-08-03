@@ -17,8 +17,8 @@ function BrowseItems({data , initialCount}: IBrowseItems) {
     <>
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-6">
         {visibleProducts.map((item) => (
-          <Link key={item.id} href={`/product/${item.id}`}>
-            <div className="mb-4">
+          <Link key={item.id} href={`/product/${item.id}`} className="group">
+            <div className="mb-4 transition-transform duration-300 group-hover:scale-105">
             <img src={item.image} alt="" className="w-full h-48 lg:h-72 object-cover rounded-xl shadow-md"/>
             <h2 className="text-base font-bold mt-2 lg:text-xl">{item.title}</h2>
             <p className="text-sm text-gray-600">{item.rate}/5</p>

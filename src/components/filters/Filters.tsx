@@ -1,9 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-
 
 const MIN = 0;
 const MAX = 250;
@@ -25,28 +23,51 @@ function Filters() {
   });
 
     const types = ["All" , "tshirt" , "short" , "shirt" , "Hoodie" , "jean"];
-    
-
 
     const router = useRouter();
-    const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    const handleTypeClick = (type: string)=>{
-        const params = new URLSearchParams(searchParams.toString());
+    const [type, setType] = useState("");
+    const [min, setMin] = useState(MIN);
+    const [max, setMax] = useState(MAX);
+    const [showFilters, setShowFilters] = useState(false);
+    const [selectedDressStyle, setSelectedDressStyle] = useState<string | null>(null);
 
-        if (type === "All") {
-            params.delete("type"); // حذف type از URL برای نمایش همه
-            }
-        else {
-            params.set("type", type);
-        }
+    useEffect(() => {
+        const currentType = searchParams.get("type");
+        const currentColor = searchParams.get("color");
+        const currentSize = searchParams.get("size");
+        const currentMin = searchParams.get("min");
+        const currentMax = searchParams.get("max");
+        const currentStyle = searchParams.get("style");
 
-        router.push(`${pathname}?${params.toString()}`);
+        if (currentType) setType(currentType);
+        if (currentColor) setSelectedColor(currentColor);
+        if (currentSize) setSelectedSize(currentSize);
+        if (currentMin) setMin(Number(currentMin));
+        if (currentMax) setMax(Number(currentMax));
+        if (currentStyle) setSelectedDressStyle(currentStyle);
+    }, []);
+
+    const applyFilters = () => {
+        const params = new URLSearchParams();
+
+        if (type) params.set("type", type);
+        if (selectedColor) params.set("color", selectedColor);
+        if (selectedSize) params.set("size", selectedSize);
+        if (minValue !== MIN) params.set("min", String(minValue));
+        if (maxValue !== MAX) params.set("max", String(maxValue));
+        if (selectedDressStyle) params.set("style", selectedDressStyle);
+
+        setShowFilters(false); // بستن فیلتر در موبایل
+
+        const basePath = selectedDressStyle ? `/style/${selectedDressStyle}` : `/style/casual`;
+        params.delete("style"); // حذف style از query چون در path هست
+        const queryString = params.toString();
+        const url = queryString ? `${basePath}?${queryString}` : basePath;
+
+        router.push(url);
     };
-
-
-
 
     const style = [
         {
@@ -122,7 +143,7 @@ function Filters() {
         <div className="fixed inset-0 bg-black/40 backdrop-blur-[1px] z-50 lg:bg-transparent lg:backdrop-blur-none lg:static">
             <div className="absolute top-[7rem] left-0 w-full h-full bg-white shadow-lg rounded-t-[1.25rem] px-6 pt-6 overflow-y-auto max-h-[calc(100vh-7rem)] lg:static lg:max-h-full lg:shadow-none lg:border-1 lg:border-[#0000001a] lg:rounded-[1.25rem]">
             <div className="flex justify-between items-center mb-4">
-              <div className="lg:flex lg:gap-5 lg:items-center">
+              <div className="lg:flex justify-between lg:items-center w-full">
                 <h2 className="text-xl font-bold">Filters</h2>
                 <span className="hidden lg:block lg:opacity-60">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 16 16" fill="none">
@@ -141,17 +162,18 @@ function Filters() {
 
             <ul className="space-y-5">
                 {
-                    types.map((type)=>(
+                    types.map((t)=>(
                         
-                        <li key={type} className="text-base font-normal text-[#00000099] rounded-lg hover:bg-black hover:rounded-lg hover:px-1 transition hover:duration-300">
-                            <div  onClick={() => handleTypeClick(type)}  className="flex justify-between items-center hover:text-white cursor-pointer">
-                                {type.charAt(0).toUpperCase() + type.slice(1)}
+                        <li key={t} className={`text-base font-normal rounded-lg transition-colors duration-400
+                            ${type === t ? "bg-black text-white px-1" : "text-[#00000099] hover:bg-black hover:text-white hover:px-1"}`}>
+                            <button onClick={() => setType(t)} className="flex justify-between items-center hover:text-white cursor-pointer w-full">
+                                  {t.charAt(0).toUpperCase() + t.slice(1)}
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                         <path d="M6.53073 2.4694L11.5307 7.4694C11.6007 7.53908 11.6561 7.62187 11.694 7.71304C11.7318 7.8042 11.7513 7.90194 11.7513 8.00065C11.7513 8.09936 11.7318 8.1971 11.694 8.28827C11.6561 8.37943 11.6007 8.46222 11.5307 8.5319L6.53073 13.5319C6.38984 13.6728 6.19874 13.752 5.99948 13.752C5.80023 13.752 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0007C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8.00003L5.46761 3.53065C5.32671 3.38976 5.24756 3.19866 5.24756 2.9994C5.24756 2.80015 5.32671 2.60905 5.46761 2.46815C5.60851 2.32726 5.7996 2.2481 5.99886 2.2481C6.19812 2.2481 6.38921 2.32726 6.53011 2.46815L6.53073 2.4694Z" fill="black" fillOpacity="0.6"/>
                                     </svg>
                                 </span>
-                            </div>
+                            </button>
                         </li>
                     ))
                 }
@@ -266,7 +288,7 @@ function Filters() {
                     <button key={size} onClick={() => setSelectedSize(size)} className={`px-5 py-[0.62rem] rounded-[3.87rem] text-sm font-normal transition-colors duration-200 cursor-pointer  ${
                         selectedSize === size
                             ? "bg-black text-white"
-                            : "bg-[#f0f0f0] text-[#00000099] hover:bg-black hover:text-white transition hover:duration-300"
+                            : "bg-[#f0f0f0] text-[#00000099] hover:bg-black hover:text-white transition-colors duration-300"
                         }`}>{size}</button>
                     ))}
                 </div>
@@ -289,15 +311,15 @@ function Filters() {
                 <ul className="space-y-5 mt-4">
                     {
                         style.map((item)=>(
-                            <li key={item.title} className="text-base font-normal text-[#00000099] rounded-lg hover:bg-black hover:rounded-lg hover:px-1 transition hover:duration-300">
-                                <Link href={item.link} className="flex justify-between items-center hover:text-white">
+                            <li key={item.title} className=" text-base font-normal text-[#00000099] rounded-lg focus-within:bg-black focus-within:text-white focus-within:px-1 transition-colors duration-400 hover:bg-black hover:rounded-lg hover:px-1">
+                                <button onClick={() => setSelectedDressStyle(item.title.toLowerCase())} className="flex justify-between items-center hover:text-white w-full">
                                     {item.title}
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                             <path d="M6.53073 2.4694L11.5307 7.4694C11.6007 7.53908 11.6561 7.62187 11.694 7.71304C11.7318 7.8042 11.7513 7.90194 11.7513 8.00065C11.7513 8.09936 11.7318 8.1971 11.694 8.28827C11.6561 8.37943 11.6007 8.46222 11.5307 8.5319L6.53073 13.5319C6.38984 13.6728 6.19874 13.752 5.99948 13.752C5.80023 13.752 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0007C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8.00003L5.46761 3.53065C5.32671 3.38976 5.24756 3.19866 5.24756 2.9994C5.24756 2.80015 5.32671 2.60905 5.46761 2.46815C5.60851 2.32726 5.7996 2.2481 5.99886 2.2481C6.19812 2.2481 6.38921 2.32726 6.53011 2.46815L6.53073 2.4694Z" fill="black" fillOpacity="0.6"/>
                                         </svg>
                                     </span>
-                                </Link>
+                                </button>
                             </li>
                         ))
                     }
@@ -305,8 +327,8 @@ function Filters() {
                 }
             </div>
 
-            <div className="flex justify-center items-center mt-5 mb-16 lg:my-5">
-                <button className="w-full py-4 text-sm font-medium bg-black rounded-[3.87rem] text-white cursor-pointer">Apply Filter</button>
+            <div className="flex justify-center items-center mt-5 mb-16 lg:my-5 group">
+                <button onClick={applyFilters} className="w-full py-4 text-sm font-medium bg-black rounded-[3.87rem] text-white cursor-pointer transition-transform duration-300 group-hover:scale-105">Apply Filter</button>
             </div>
 
           </div>

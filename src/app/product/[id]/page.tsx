@@ -29,7 +29,6 @@ async function Product({params}: {params:Promise<{id: string}>}) {
 
     if (error) {
       console.error("Error fetching product:", error);
-      // می‌تونی اینجا رندر خطا یا کامپوننت جایگزین قرار بدی
       return <div>Product not found</div>;
     }
 

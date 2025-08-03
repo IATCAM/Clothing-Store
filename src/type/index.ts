@@ -26,6 +26,19 @@ export interface ITestimonial {
   comment: string;
 }
 
+export interface IfilterProps {
+  params: { style: string };
+  searchParams?: {
+    page?: string;
+    per_page?: string;
+    color?: string;
+    size?: string;
+    min?: string;
+    max?: string;
+    type?: string;
+  };
+}
+
 // export interface Idiscounts{
 //   id: number,
 //   code: string,
