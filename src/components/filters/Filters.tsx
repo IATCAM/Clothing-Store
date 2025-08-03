@@ -28,9 +28,9 @@ function Filters() {
     const searchParams = useSearchParams();
 
     const [type, setType] = useState("");
-    const [min, setMin] = useState(MIN);
-    const [max, setMax] = useState(MAX);
-    const [showFilters, setShowFilters] = useState(false);
+    const [, setMin] = useState(MIN);
+    const [, setMax] = useState(MAX);
+    const [, setShowFilters] = useState(false);
     const [selectedDressStyle, setSelectedDressStyle] = useState<string | null>(null);
 
     useEffect(() => {
