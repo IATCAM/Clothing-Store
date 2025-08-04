@@ -5,8 +5,7 @@ import { useShoppingCartContext } from "@/context/ShoppingCartContext";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Iproducts } from "@/type";
-
-
+import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 
 function Cart() {
 
@@ -16,6 +15,7 @@ function Cart() {
   const [discountCode , setDiscountCode] = useState("");
   const [finalPrice , setFinalPrice] = useState(0);
   const [discountPrice , setDiscountPrice] = useState(0);
+  const [isLoading , setIsLoading] = useState(false);
 
   // useEffect(()=>{
   //   axios.get(`http://localhost:8000/products`)
@@ -25,14 +25,30 @@ function Cart() {
   //   })
   // } , []);
 
-   useEffect(() => {
+  useEffect(() => {
     const fetchProducts = async () => {
-      const { data, error } = await supabase.from("products").select("*");
-      if (!error && data) setProductData(data as Iproducts[]);
+      try {
+        setIsLoading(true);
+        const { data, error } = await supabase.from("products").select("*");
+
+        if (error) {
+          console.error("Error fetching products:", error.message);
+          return;
+        }
+
+        if (data) {
+          setProductData(data as Iproducts[]);
+        }
+      } catch (err) {
+        console.error("Unexpected error:", err);
+      } finally {
+        setIsLoading(false); // همیشه اجرا میشه چه خطا باشه چه نباشه
+      }
     };
 
     fetchProducts();
   }, []);
+
 
   // const handleSubmitDiscount = ()=>{
   //   axios.get(`http://localhost:8000/discounts?code=${discountCode}`)
@@ -86,9 +102,12 @@ function Cart() {
       <div className="lg:grid lg:grid-cols-7 lg:gap-5 items-start">
         <div className="border-1 border-[#0000001a] rounded-[1.25rem] w-full p-[0.88rem] lg:col-span-4 lg:px-6 lg:py-5">
           {
-            cartItems.map((item)=>(
+            isLoading ? <LoadingSpinner /> : 
+            (cartItems.length === 0 ?
+            (<p className="text-xl font-bold text-center opacity-60">Looks like your cart is empty</p>) :
+            (cartItems.map((item)=>(
               <CartItem key={item.id} {...item} />
-            ))
+            ))))
           }
         </div>
 
@@ -126,11 +145,11 @@ function Cart() {
               <input onChange={(e)=>setDiscountCode(e.target.value)} className="opacity-60 outline-none" type="text" placeholder="Add promo code" />
             </div>
             <div>
-              <button onClick={handleSubmitDiscount} className="bg-black text-sm font-medium py-3 px-8 rounded-[3.87rem] text-white cursor-pointer lg:text-base">Apply</button>
+              <button onClick={handleSubmitDiscount} className="bg-black text-sm font-medium py-3 px-8 rounded-[3.87rem] text-white cursor-pointer lg:text-base  border border-black transition-colors duration-400 hover:border hover:border-[#0000001a] hover:bg-white hover:text-black">Apply</button>
             </div>
           </div>
 
-          <button className="bg-black text-white py-4 w-full rounded-[3.87rem] text-sm lg:text-base font-medium flex items-center justify-center cursor-pointer">
+          <button className="bg-black text-white py-4 w-full rounded-[3.87rem] text-sm lg:text-base font-medium flex items-center justify-center cursor-pointer border border-black transition-colors duration-400 hover:border hover:border-[#0000001a] hover:bg-white hover:text-black">
             Go to Checkout
             <span className="ml-3">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">

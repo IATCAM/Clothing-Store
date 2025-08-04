@@ -165,12 +165,12 @@ function Filters() {
                     types.map((t)=>(
                         
                         <li key={t} className={`text-base font-normal rounded-lg transition-colors duration-400
-                            ${type === t ? "bg-black text-white px-1" : "text-[#00000099] hover:bg-black hover:text-white hover:px-1"}`}>
+                            ${type === t ? "bg-black text-white px-1" : "text-[#00000099] lg:px-1 hover:bg-black hover:text-white hover:px-1"}`}>
                             <button onClick={() => setType(t)} className="flex justify-between items-center hover:text-white cursor-pointer w-full">
                                   {t.charAt(0).toUpperCase() + t.slice(1)}
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                        <path d="M6.53073 2.4694L11.5307 7.4694C11.6007 7.53908 11.6561 7.62187 11.694 7.71304C11.7318 7.8042 11.7513 7.90194 11.7513 8.00065C11.7513 8.09936 11.7318 8.1971 11.694 8.28827C11.6561 8.37943 11.6007 8.46222 11.5307 8.5319L6.53073 13.5319C6.38984 13.6728 6.19874 13.752 5.99948 13.752C5.80023 13.752 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0007C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8.00003L5.46761 3.53065C5.32671 3.38976 5.24756 3.19866 5.24756 2.9994C5.24756 2.80015 5.32671 2.60905 5.46761 2.46815C5.60851 2.32726 5.7996 2.2481 5.99886 2.2481C6.19812 2.2481 6.38921 2.32726 6.53011 2.46815L6.53073 2.4694Z" fill="black" fillOpacity="0.6"/>
+                                        <path d="M6.53073 2.4694L11.5307 7.4694C11.6007 7.53908 11.6561 7.62187 11.694 7.71304C11.7318 7.8042 11.7513 7.90194 11.7513 8.00065C11.7513 8.09936 11.7318 8.1971 11.694 8.28827C11.6561 8.37943 11.6007 8.46222 11.5307 8.5319L6.53073 13.5319C6.38984 13.6728 6.19874 13.752 5.99948 13.752C5.80023 13.752 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0007C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8.00003L5.46761 3.53065C5.32671 3.38976 5.24756 3.19866 5.24756 2.9994C5.24756 2.80015 5.32671 2.60905 5.46761 2.46815C5.60851 2.32726 5.7996 2.2481 5.99886 2.2481C6.19812 2.2481 6.38921 2.32726 6.53011 2.46815L6.53073 2.4694Z" fill="currentColor" fillOpacity="0.6"/>
                                     </svg>
                                 </span>
                             </button>
@@ -311,12 +311,12 @@ function Filters() {
                 <ul className="space-y-5 mt-4">
                     {
                         style.map((item)=>(
-                            <li key={item.title} className=" text-base font-normal text-[#00000099] rounded-lg focus-within:bg-black focus-within:text-white focus-within:px-1 transition-colors duration-400 hover:bg-black hover:rounded-lg hover:px-1">
-                                <button onClick={() => setSelectedDressStyle(item.title.toLowerCase())} className="flex justify-between items-center hover:text-white w-full">
+                            <li key={item.title} className="text-base font-normal text-[#00000099] lg:px-1 rounded-lg focus-within:bg-black focus-within:text-white focus-within:px-1 transition-colors duration-400 hover:bg-black hover:text-white hover:rounded-lg hover:px-1">
+                                <button onClick={() => setSelectedDressStyle(item.title.toLowerCase())} className="flex justify-between items-center w-full cursor-pointer">
                                     {item.title}
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                            <path d="M6.53073 2.4694L11.5307 7.4694C11.6007 7.53908 11.6561 7.62187 11.694 7.71304C11.7318 7.8042 11.7513 7.90194 11.7513 8.00065C11.7513 8.09936 11.7318 8.1971 11.694 8.28827C11.6561 8.37943 11.6007 8.46222 11.5307 8.5319L6.53073 13.5319C6.38984 13.6728 6.19874 13.752 5.99948 13.752C5.80023 13.752 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0007C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8.00003L5.46761 3.53065C5.32671 3.38976 5.24756 3.19866 5.24756 2.9994C5.24756 2.80015 5.32671 2.60905 5.46761 2.46815C5.60851 2.32726 5.7996 2.2481 5.99886 2.2481C6.19812 2.2481 6.38921 2.32726 6.53011 2.46815L6.53073 2.4694Z" fill="black" fillOpacity="0.6"/>
+                                            <path d="M6.53073 2.4694L11.5307 7.4694C11.6007 7.53908 11.6561 7.62187 11.694 7.71304C11.7318 7.8042 11.7513 7.90194 11.7513 8.00065C11.7513 8.09936 11.7318 8.1971 11.694 8.28827C11.6561 8.37943 11.6007 8.46222 11.5307 8.5319L6.53073 13.5319C6.38984 13.6728 6.19874 13.752 5.99948 13.752C5.80023 13.752 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0007C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8.00003L5.46761 3.53065C5.32671 3.38976 5.24756 3.19866 5.24756 2.9994C5.24756 2.80015 5.32671 2.60905 5.46761 2.46815C5.60851 2.32726 5.7996 2.2481 5.99886 2.2481C6.19812 2.2481 6.38921 2.32726 6.53011 2.46815L6.53073 2.4694Z" fill="currentColor" fillOpacity="0.6"/>
                                         </svg>
                                     </span>
                                 </button>
@@ -328,7 +328,7 @@ function Filters() {
             </div>
 
             <div className="flex justify-center items-center mt-5 mb-16 lg:my-5 group">
-                <button onClick={applyFilters} className="w-full py-4 text-sm font-medium bg-black rounded-[3.87rem] text-white cursor-pointer transition-transform duration-300 group-hover:scale-105">Apply Filter</button>
+                <button onClick={applyFilters} className="w-full py-4 text-sm font-medium bg-black rounded-[3.87rem] text-white cursor-pointer  border border-black transition-colors duration-400 hover:border hover:border-[#0000001a] hover:bg-white hover:text-black">Apply Filter</button>
             </div>
 
           </div>

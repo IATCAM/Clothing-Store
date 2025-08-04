@@ -13,7 +13,7 @@ function ColorSelection({ colors }: IcolorSelection) {
       <h3 className="text-sm font-normal opacity-60 mb-4 lg:text-base">Select Colors</h3>
       <div className="flex items-center gap-[0.77rem] lg:gap-4">
         {colors.map((color) => (
-          <button key={color} onClick={() => setSelectedColor(color)} className="rounded-full w-[2.44rem] h-[2.44rem]" style={{ backgroundColor: color }}>
+          <button key={color} onClick={() => setSelectedColor(color)} className="rounded-full w-[2.44rem] h-[2.44rem] cursor-pointer" style={{ backgroundColor: color }}>
             {selectedColor === color && (
               <span className="flex  justify-center item-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">

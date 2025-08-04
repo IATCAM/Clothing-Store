@@ -7,19 +7,9 @@ import SizeSelector from "@/components/sizeSelector/SizeSelector";
 import Suggest from "@/components/suggest/Suggest";
 import { supabase } from "@/lib/supabaseClient";
 
-// export interface props{
-//     params: {id: string},
-//     searchParams: {page?: string , per_page?: string}
-
-//   params: Record<string, string>;
-//   searchParams: Record<string, string | string[] | undefined>;
-// }
-
 async function Product({params}: {params:Promise<{id: string}>}) {
-    const {id} = await params;
 
-    // const result = await fetch(`http://localhost:8000/products/${id}`);
-    // const data = await result.json() as Iproducts;
+    const {id} = await params;
 
     const { data, error } = await supabase
       .from("products")
@@ -99,7 +89,7 @@ async function Product({params}: {params:Promise<{id: string}>}) {
 
             <div className="bg-black opacity-10 w-full h-[0.06rem] my-6"></div>
 
-            <div className="flex items-center gap-3 mb-[3.16rem]">
+            <div className="flex gap-3 mb-[3.16rem] flex-nowrap items-center">
               <Button id={parseInt(data.id)} />
               <AddToCart id={parseInt(data.id)} />
             </div>

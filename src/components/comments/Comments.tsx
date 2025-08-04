@@ -61,7 +61,7 @@ function Comments() {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`py-2 text-base whitespace-nowrap font-normal lg:text-xl ${
+            className={`py-2 text-base whitespace-nowrap font-normal lg:text-xl cursor-pointer hover:border-b-1 ${
               activeTab === tab ? "border-b-2 border-black text-black" : "text-gray-500"}`}>
             {tab}
           </button>
@@ -70,14 +70,14 @@ function Comments() {
 
       {/* Tab Contents */}
       {activeTab === "Product Details" && (
-        <div className="text-gray-700">
-          <p>توضیحات کامل محصول اینجاست...</p>
+        <div className="text-gray-700 text-center">
+          <p className="texxt-xl font-bold">Product Details</p>
         </div>
       )}
 
       {activeTab === "FAQs" && (
-        <div className="text-gray-700">
-          <p>سؤالات متداول کاربران در این بخش قرار دارد.</p>
+        <div className="text-gray-700 text-center">
+          <p className="texxt-xl font-bold">Frequently Asked Questions</p>
         </div>
       )}
 
@@ -101,7 +101,7 @@ function Comments() {
 
           {reviews.length && (
             <div className="mt-5 text-center lg:mt-[2.28rem]">
-              <button onClick={handleLoadMore} className="text-sm font-medium py-[0.88rem] px-9 border border-[#0000001a] rounded-[3.87rem] lg:px-[3.38rem] lg:py-4 lg:text-base cursor-pointer">Load More Reviews</button>
+              <button onClick={handleLoadMore} className="text-sm font-medium py-[0.88rem] px-9 border border-[#0000001a] rounded-[3.87rem] lg:px-[3.38rem] lg:py-4 lg:text-base cursor-pointer transition-colors duration-400 hover:bg-black hover:text-white">Load More Reviews</button>
             </div>
           )}
         </div>

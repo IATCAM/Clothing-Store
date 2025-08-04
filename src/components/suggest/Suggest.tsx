@@ -72,8 +72,8 @@ function Suggest() {
         // حالت دسکتاپ (4 کارت ساده)
         <div className="grid grid-cols-4 gap-6 px-24 mt-10">
           {data.slice(0, 4).map((item) => (
-            <Link key={item.id} href={`/product/${item.id}`}>
-              <div className="mb-4">
+            <Link key={item.id} href={`/product/${item.id}`} className="group">
+              <div className="mb-4 transition-transform duration-300 group-hover:scale-105">
                 <img src={item.image} alt="" className="w-full h-72 object-cover rounded-xl shadow-md"/>
                 <h2 className="text-xl font-bold mt-2">{item.title}</h2>
                 <p className="text-sm text-gray-600">{item.rate}/5</p>
