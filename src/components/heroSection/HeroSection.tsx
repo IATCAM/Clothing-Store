@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 function HeroSection() {
   return (
@@ -8,7 +9,7 @@ function HeroSection() {
         <p className="text-sm opacity-60 leading-5 pt-5 pb-6 lg:text-base font-normal lg:leading-[1.37rem] lg:mt-8 lg:w-[35rem]">
             Browse through our diverse range of meticulously crafted garments, designed  to bring out your individuality and cater to your sense of style.
         </p>
-        <button className="bg-black text-white rounded-[3.87rem] text-base py-4 px-[3.37rem] w-full font-medium lg:w-[13.12rem] border border-black lg:mt-8 cursor-pointer transition-colors duration-400 hover:border hover:border-[#0000001a] hover:bg-[#f0f0f0] hover:text-black">Shop Now</button>
+        <button className="bg-black text-white rounded-[3.87rem] text-base py-4 px-[3.37rem] w-full font-medium lg:w-[13.12rem] border border-black lg:mt-8 cursor-pointer transition-colors duration-400 hover:border hover:border-[#0000001a] hover:bg-[#f0f0f0] hover:text-black"><Link href="/shop">Shop Now</Link></button>
        <div className="flex flex-wrap lg:flex-nowrap justify-center items-center mt-[1.38rem] lg:justify-start lg:mt-[3.94rem] lg:pb-[7.25rem]">
             <div>
                 <h3 className="text-2xl font-bold lg:text-[2.5rem]">200+</h3>

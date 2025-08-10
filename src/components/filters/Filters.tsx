@@ -20,14 +20,14 @@ function Filters() {
     color: true,
     size: true,
     dressStyle: true,
-  });
+});
 
     const types = ["All" , "tshirt" , "short" , "shirt" , "Hoodie" , "jean"];
 
     const router = useRouter();
     const searchParams = useSearchParams();
 
-    const [type, setType] = useState("");
+    const [type, setType] = useState(() => searchParams.get("type") || "all");
     const [, setMin] = useState(MIN);
     const [, setMax] = useState(MAX);
     const [, setShowFilters] = useState(false);
@@ -46,23 +46,34 @@ function Filters() {
         if (currentSize) setSelectedSize(currentSize);
         if (currentMin) setMin(Number(currentMin));
         if (currentMax) setMax(Number(currentMax));
-        if (currentStyle) setSelectedDressStyle(currentStyle);
-    }, []);
+        if (currentStyle) {
+            setSelectedDressStyle(currentStyle);
+        } else {
+            if (typeof window !== "undefined") {
+            const pathParts = window.location.pathname.split("/");
+            if (pathParts.length > 2) {
+                setSelectedDressStyle(pathParts[2]);
+            }
+            }
+        }
+    }, [searchParams]);
 
     const applyFilters = () => {
         const params = new URLSearchParams();
 
-        if (type) params.set("type", type);
+        if (type && type.toLowerCase() !== "all") {
+            params.set("type", type);
+        }
         if (selectedColor) params.set("color", selectedColor);
         if (selectedSize) params.set("size", selectedSize);
         if (minValue !== MIN) params.set("min", String(minValue));
         if (maxValue !== MAX) params.set("max", String(maxValue));
         if (selectedDressStyle) params.set("style", selectedDressStyle);
 
-        setShowFilters(false); // بستن فیلتر در موبایل
+        setShowFilters(false);
 
         const basePath = selectedDressStyle ? `/style/${selectedDressStyle}` : `/style/casual`;
-        params.delete("style"); // حذف style از query چون در path هست
+        // params.delete("style");
         const queryString = params.toString();
         const url = queryString ? `${basePath}?${queryString}` : basePath;
 
@@ -89,14 +100,14 @@ function Filters() {
     ];
 
     const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Math.min(Number(e.target.value), maxValue - 1);
-    setMinValue(value);
-  };
+        const value = Math.min(Number(e.target.value), maxValue - 1);
+        setMinValue(value);
+    };
 
-  const handleMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Math.max(Number(e.target.value), minValue + 1);
-    setMaxValue(value);
-  };
+    const handleMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = Math.max(Number(e.target.value), minValue + 1);
+        setMaxValue(value);
+    };
 
     useEffect(()=>{
         const isDesktop = window.innerWidth >= 1024;

@@ -102,7 +102,7 @@ function Cart() {
       <div className="lg:grid lg:grid-cols-7 lg:gap-5 items-start">
         <div className="border-1 border-[#0000001a] rounded-[1.25rem] w-full p-[0.88rem] lg:col-span-4 lg:px-6 lg:py-5">
           {
-            isLoading ? <LoadingSpinner /> : 
+            isLoading ? <div className="flex justify-center items-center"> <LoadingSpinner /> </div>: 
             (cartItems.length === 0 ?
             (<p className="text-xl font-bold text-center opacity-60">Looks like your cart is empty</p>) :
             (cartItems.map((item)=>(
@@ -135,8 +135,8 @@ function Cart() {
             <h4 className="text-xl font-bold lg:text-2xl">${finalPrice || totalPrice}</h4>
           </div>
 
-          <div className="flex justify-between items-center my-4">
-            <div className="flex items-center gap-[0.62rem] bg1 rounded-[3.87rem] py-3 px-4 w-[230px] lg:w-[350px]">
+          <div className="flex justify-between items-center my-4 gap-3">
+            <div className="flex items-center gap-[0.62rem] bg1 rounded-[3.87rem] py-3 px-4 w-[230px] lg:w-0 flex-grow">
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M19.2305 10.4047L11.4711 2.64532C11.3264 2.4997 11.1543 2.38424 10.9647 2.30565C10.775 2.22707 10.5717 2.18691 10.3664 2.18751H3.12501C2.87637 2.18751 2.63791 2.28628 2.46209 2.46209C2.28628 2.63791 2.18751 2.87637 2.18751 3.12501V10.3664C2.18691 10.5717 2.22707 10.775 2.30565 10.9647C2.38424 11.1543 2.4997 11.3264 2.64532 11.4711L10.4047 19.2305C10.6977 19.5234 11.0951 19.688 11.5094 19.688C11.9237 19.688 12.3211 19.5234 12.6141 19.2305L19.2305 12.6141C19.5234 12.3211 19.688 11.9237 19.688 11.5094C19.688 11.0951 19.5234 10.6977 19.2305 10.4047ZM11.5094 17.6836L4.06251 10.2344V4.06251H10.2344L17.6813 11.5094L11.5094 17.6836ZM7.81251 6.56251C7.81251 6.80973 7.7392 7.05141 7.60184 7.25697C7.46449 7.46253 7.26927 7.62275 7.04086 7.71736C6.81245 7.81197 6.56112 7.83672 6.31864 7.78849C6.07617 7.74026 5.85344 7.62121 5.67862 7.44639C5.50381 7.27157 5.38476 7.04885 5.33652 6.80637C5.28829 6.56389 5.31305 6.31256 5.40766 6.08415C5.50227 5.85574 5.66248 5.66052 5.86804 5.52317C6.07361 5.38582 6.31528 5.31251 6.56251 5.31251C6.89403 5.31251 7.21197 5.4442 7.44639 5.67862C7.68081 5.91304 7.81251 6.23099 7.81251 6.56251Z" fill="black" fillOpacity="0.4"/>
@@ -145,7 +145,7 @@ function Cart() {
               <input onChange={(e)=>setDiscountCode(e.target.value)} className="opacity-60 outline-none" type="text" placeholder="Add promo code" />
             </div>
             <div>
-              <button onClick={handleSubmitDiscount} className="bg-black text-sm font-medium py-3 px-8 rounded-[3.87rem] text-white cursor-pointer lg:text-base  border border-black transition-colors duration-400 hover:border hover:border-[#0000001a] hover:bg-white hover:text-black">Apply</button>
+              <button onClick={handleSubmitDiscount} className="bg-black text-sm font-medium py-3 px-8 rounded-[3.87rem] text-white cursor-pointer lg:text-base border border-black transition-colors duration-400 hover:border hover:border-[#0000001a] hover:bg-white hover:text-black">Apply</button>
             </div>
           </div>
 

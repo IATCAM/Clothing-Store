@@ -1,20 +1,40 @@
 "use client"
 
-import { useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 function SignUp() {
 
-    const [show , setShow] = useState(true);
-    const handleCloseBtn = ()=>{
-        setShow(false);
-    }
-    if(!show) return null;
+  const [show, setShow] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleCloseBtn = () => {
+    setShow(false);
+  };
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setIsLoggedIn(!!data.session);
+    });
+
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsLoggedIn(!!session);
+    });
+
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+  }, []);
+
+  // شرط نمایش بعد از هوک‌ها
+  if (!show || isLoggedIn) return null;
 
   return (
     <div className="bg-black">
       <div className="lg:flex lg:items-center lg:justify-center">
         <p className="text-white py-[0.56rem] text-[0.75rem] text-center font-normal leading-normal lg:text-sm flex-1 lg:ml-[6.25rem]">
-            Sign up and get 20% off to your first order. <span className="font-medium underline cursor-pointer"> Sign Up Now</span>
+            Sign up and get 20% off to your first order. <span className="font-medium underline cursor-pointer"> <Link href="/auth"> Sign Up Now</Link></span>
         </p>
         <button className="hidden lg:flex mr-[6.25rem] cursor-pointer" onClick={handleCloseBtn}>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">

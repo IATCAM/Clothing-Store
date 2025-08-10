@@ -51,12 +51,12 @@ async function Product({params}: {params:Promise<{id: string}>}) {
       <div className="lg:grid lg:grid-cols-2 lg:gap-10 lg:pt-[2.44rem] lg:items-center">
         <div className="lg:grid lg:grid-cols-4 lg:items-center lg:gap-[0.88rem]">
           <div className="pt-[1.41rem] mx-auto mb-3 lg:col-span-3 lg:order-2 lg:pt-0">
-            <img className="rounded-[1.25rem] w-full aspect-square lg:aspect-[6/7]" src={data.image} alt="" />
+            <img className="rounded-[1.25rem] w-full aspect-square lg:aspect-[6/7] xl:aspect-[4/6]" src={data.image} alt="" />
           </div>
           <div className="grid grid-cols-3 gap-3 lg:grid-cols-1 lg:order-1 lg:gap-[0.9rem]">
-            <img className="aspect-square w-full rounded-[1.25rem] lg:aspect-[6/7]" src={data.image} alt="" />
-            <img className="aspect-square w-full rounded-[1.25rem] lg:aspect-[6/7]" src={data.image} alt="" />
-            <img className="aspect-square w-full rounded-[1.25rem] lg:aspect-[6/7]" src={data.image} alt="" />
+            <img className="aspect-square w-full rounded-[1.25rem] lg:aspect-[6/7] xl:aspect-[4/6]" src={data.image} alt="" />
+            <img className="aspect-square w-full rounded-[1.25rem] lg:aspect-[6/7] xl:aspect-[4/6]" src={data.image} alt="" />
+            <img className="aspect-square w-full rounded-[1.25rem] lg:aspect-[6/7] xl:aspect-[4/6]" src={data.image} alt="" />
           </div>
         </div>
 

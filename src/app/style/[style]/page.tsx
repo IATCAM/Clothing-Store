@@ -7,7 +7,7 @@ import FilterWrapper from "@/components/filterWrapper/FilterWrapper";
 
 interface IProps {
   params: Promise<{ style: string }>;
-   searchParams: Promise<{
+  searchParams: Promise<{
     page?: string;
     per_page?: string;
     type?: string;
@@ -16,6 +16,7 @@ interface IProps {
     min?: string;
     max?: string;
     style?: string;
+    title?: string
   }>
 }
 
@@ -31,6 +32,7 @@ export default async function StylePage({ params, searchParams }: IProps) {
 
   const page = resolvedSearchParams?.page ?? "1";
   const per_page = resolvedSearchParams?.per_page ?? initialCount.toString();
+  const style = resolvedParams.style;
 
   const from = (Number(page) - 1) * Number(per_page);
   const to = from + Number(per_page) - 1;
@@ -42,20 +44,23 @@ export default async function StylePage({ params, searchParams }: IProps) {
   const max = resolvedSearchParams?.max ? Number(resolvedSearchParams.max) : 250;
 
   let query = supabase
-  .from("products")
-  .select("*", { count: "exact" })
-  .eq("style", resolvedParams.style);
+    .from("products")
+    .select("*", { count: "exact" })
+    .eq("style", resolvedParams.style);
+    if (style !== "all") {
+      query = query.eq("style", style)}
 
-  if (type) query = query.eq("type", type);
-  if (color) query = query.eq("color", color);
-  if (size) query = query.eq("size", size);
-  query = query.gte("cost", min).lte("cost", max);
+    if (type) query = query.eq("type", type);
+    if (color) query = query.eq("color", color);
+    if (size) query = query.eq("size", size);
+    
+    query = query.gte("cost", min).lte("cost", max);
 
-  const { data: items, count , error } = await query.range(from, to);
+    const { data: items, count , error } = await query.range(from, to);
 
-  if (error) {
-  console.error("❌ Supabase query error:", error.message);
-}
+    if (error) {
+    console.error("❌ Supabase query error:", error.message);
+    }
 
   const data: Ipagination = {
     data: items ?? [],
