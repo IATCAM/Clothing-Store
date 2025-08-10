@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
 import SignUp from "../signUp/SignUp";
@@ -10,9 +11,11 @@ function Layout({ children }: IlayoutProps) {
   return (
     <div>
       <SignUp />
-      <Navbar />
+      <Suspense fallback={<div>Loading Navbar...</div>}>
+        <Navbar />
+      </Suspense>
       {children}
-     <Footer />
+      <Footer />
     </div>
   );
 }
