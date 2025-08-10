@@ -1,6 +1,7 @@
 "use client"
 
 import { supabase } from "@/lib/supabaseClient";
+import { User } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -18,7 +19,7 @@ function Auth() {
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   const onSubmit = async (data: FormData) => {
     setError(null);
