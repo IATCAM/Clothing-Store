@@ -73,7 +73,13 @@
 import InfiniteProducts from "@/components/infiniteScroll/InfiniteScroll";
 import { supabase } from "@/lib/supabaseClient";
 
-async function Shop({ searchParams = {} }: { searchParams?: { title?: string } }) {
+interface ShopPageProps {
+  searchParams?: {
+    title?: string;
+  };
+}
+
+async function Shop({ searchParams }: ShopPageProps) {
   const title = searchParams?.title || "";
   const PAGE_SIZE = 8;
 
