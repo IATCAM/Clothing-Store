@@ -111,7 +111,7 @@ async function Shop({ searchParams }: IShopPageProps) {
           <h3 className="text-sm font-normal lg:text-base capitalize">Shop</h3>
         </div>
 
-      <h1 className="text-center font1 text-2xl mb-8 lg:text-5xl lg:mb-[3.44rem] font-bold tracking-wider">SHOP</h1>
+      <h1 className="uppercase text-[2rem] font-bold font1 tracking-wider mt-2 mb-5 lg:text-[2.5rem] lg:my-6">Shop</h1>
 
       {/* key اینجا باعث می‌شود هر بار title تغییر کرد کامپوننت ریست شود */}
       <InfiniteProducts key={title} initialProducts={data} searchTitle={title} />
