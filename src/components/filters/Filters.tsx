@@ -196,7 +196,7 @@ function Filters() {
                 
                  <div className="flex items-center justify-between">
                     <h2 className="text-xl font-bold">Price</h2>
-                    <span  onClick={() => toggleSection("price")}>
+                    <span className={`${openSections.price ? "" : "rotate-90"} transition-transform duration-300`}  onClick={() => toggleSection("price")}>
                         <svg className="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                             <path d="M2.4694 9.96939L7.4694 4.96939C7.53908 4.89947 7.62187 4.84399 7.71304 4.80614C7.8042 4.76828 7.90194 4.7488 8.00065 4.7488C8.09936 4.7488 8.1971 4.76828 8.28827 4.80614C8.37943 4.84399 8.46222 4.89947 8.5319 4.96939L13.5319 9.96939C13.6728 10.1103 13.752 10.3014 13.752 10.5006C13.752 10.6999 13.6728 10.891 13.5319 11.0319C13.391 11.1728 13.1999 11.2519 13.0007 11.2519C12.8014 11.2519 12.6103 11.1728 12.4694 11.0319L8.00003 6.56251L3.53065 11.0325C3.38976 11.1734 3.19866 11.2526 2.9994 11.2526C2.80015 11.2526 2.60905 11.1734 2.46815 11.0325C2.32726 10.8916 2.2481 10.7005 2.2481 10.5013C2.2481 10.302 2.32726 10.1109 2.46815 9.97001L2.4694 9.96939Z" fill="black"/>
                         </svg>
@@ -208,8 +208,7 @@ function Filters() {
                     {/* Range slider track */}
                     <div className="relative h-2 bg-gray-300 rounded-full">
                         {/* Active range (black fill) */}
-                        <div
-                        className="absolute h-2 bg-black rounded-full"
+                        <div className="absolute h-2 bg-black rounded-full"
                         style={{
                             left: `${(minValue / MAX) * 100}%`,
                             width: `${((maxValue - minValue) / MAX) * 100}%`,
@@ -254,7 +253,7 @@ function Filters() {
             <div>
                 <div className="flex items-center justify-between">
                     <h2 className="text-xl font-bold">Colors</h2>
-                    <span  onClick={() => toggleSection("color")}>
+                    <span className={`${openSections.color ? "" : "rotate-90"} transition-transform duration-300`}  onClick={() => toggleSection("color")}>
                         <svg className="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                             <path d="M2.4694 9.96939L7.4694 4.96939C7.53908 4.89947 7.62187 4.84399 7.71304 4.80614C7.8042 4.76828 7.90194 4.7488 8.00065 4.7488C8.09936 4.7488 8.1971 4.76828 8.28827 4.80614C8.37943 4.84399 8.46222 4.89947 8.5319 4.96939L13.5319 9.96939C13.6728 10.1103 13.752 10.3014 13.752 10.5006C13.752 10.6999 13.6728 10.891 13.5319 11.0319C13.391 11.1728 13.1999 11.2519 13.0007 11.2519C12.8014 11.2519 12.6103 11.1728 12.4694 11.0319L8.00003 6.56251L3.53065 11.0325C3.38976 11.1734 3.19866 11.2526 2.9994 11.2526C2.80015 11.2526 2.60905 11.1734 2.46815 11.0325C2.32726 10.8916 2.2481 10.7005 2.2481 10.5013C2.2481 10.302 2.32726 10.1109 2.46815 9.97001L2.4694 9.96939Z" fill="black"/>
                         </svg>
@@ -286,7 +285,7 @@ function Filters() {
             <div>
                 <div className="flex items-center justify-between">
                     <h2 className="text-xl font-bold">Size</h2>
-                    <span  onClick={() => toggleSection("size")}>
+                    <span className={`${openSections.size ? "" : "rotate-90"} transition-transform duration-300`}  onClick={() => toggleSection("size")}>
                         <svg className="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                             <path d="M2.4694 9.96939L7.4694 4.96939C7.53908 4.89947 7.62187 4.84399 7.71304 4.80614C7.8042 4.76828 7.90194 4.7488 8.00065 4.7488C8.09936 4.7488 8.1971 4.76828 8.28827 4.80614C8.37943 4.84399 8.46222 4.89947 8.5319 4.96939L13.5319 9.96939C13.6728 10.1103 13.752 10.3014 13.752 10.5006C13.752 10.6999 13.6728 10.891 13.5319 11.0319C13.391 11.1728 13.1999 11.2519 13.0007 11.2519C12.8014 11.2519 12.6103 11.1728 12.4694 11.0319L8.00003 6.56251L3.53065 11.0325C3.38976 11.1734 3.19866 11.2526 2.9994 11.2526C2.80015 11.2526 2.60905 11.1734 2.46815 11.0325C2.32726 10.8916 2.2481 10.7005 2.2481 10.5013C2.2481 10.302 2.32726 10.1109 2.46815 9.97001L2.4694 9.96939Z" fill="black"/>
                         </svg>
@@ -311,7 +310,7 @@ function Filters() {
             <div>
                 <div className="flex items-center justify-between">
                     <h2 className="text-xl font-bold">Dress Style</h2>
-                    <span  onClick={() => toggleSection("dressStyle")}>
+                    <span className={`${openSections.dressStyle ? "" : "rotate-90"} transition-transform duration-300`}  onClick={() => toggleSection("dressStyle")}>
                         <svg className="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                             <path d="M2.4694 9.96939L7.4694 4.96939C7.53908 4.89947 7.62187 4.84399 7.71304 4.80614C7.8042 4.76828 7.90194 4.7488 8.00065 4.7488C8.09936 4.7488 8.1971 4.76828 8.28827 4.80614C8.37943 4.84399 8.46222 4.89947 8.5319 4.96939L13.5319 9.96939C13.6728 10.1103 13.752 10.3014 13.752 10.5006C13.752 10.6999 13.6728 10.891 13.5319 11.0319C13.391 11.1728 13.1999 11.2519 13.0007 11.2519C12.8014 11.2519 12.6103 11.1728 12.4694 11.0319L8.00003 6.56251L3.53065 11.0325C3.38976 11.1734 3.19866 11.2526 2.9994 11.2526C2.80015 11.2526 2.60905 11.1734 2.46815 11.0325C2.32726 10.8916 2.2481 10.7005 2.2481 10.5013C2.2481 10.302 2.32726 10.1109 2.46815 9.97001L2.4694 9.96939Z" fill="black"/>
                         </svg>

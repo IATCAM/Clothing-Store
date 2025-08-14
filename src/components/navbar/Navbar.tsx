@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isCategory , setIsCategory] = useState(false);
   const searchParams = useSearchParams()
   const [search , setSearch] = useState(searchParams.get("title") || "");
   const router = useRouter();
@@ -20,6 +21,10 @@ function Navbar() {
       setIsOpen(false);
     }
   };
+
+  const handleCloseMenu = ()=>{
+    setIsOpen(false);
+  }
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>)=>{
       if (e.key === 'Enter') {
@@ -88,13 +93,13 @@ function Navbar() {
       <ul className='lg:flex items-center gap-3 hidden cursor-pointer relative'>
         <li className='flex items-center text-black gap-1 lg:rounded-xl lg:p-2 relative group transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2'>
           Category
-          <span>
+          <span className="transition-transform duration-300 group-hover:rotate-180">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M13.5306 6.53063L8.53063 11.5306C8.46095 11.6005 8.37816 11.656 8.28699 11.6939C8.19583 11.7317 8.09809 11.7512 7.99938 11.7512C7.90067 11.7512 7.80293 11.7317 7.71176 11.6939C7.6206 11.656 7.53781 11.6005 7.46813 11.5306L2.46813 6.53063C2.32723 6.38973 2.24808 6.19864 2.24808 5.99938C2.24808 5.80012 2.32723 5.60902 2.46813 5.46813C2.60902 5.32723 2.80012 5.24808 2.99938 5.24808C3.19864 5.24808 3.38973 5.32723 3.53063 5.46813L8 9.9375L12.4694 5.4675C12.6103 5.32661 12.8014 5.24745 13.0006 5.24745C13.1999 5.24745 13.391 5.32661 13.5319 5.4675C13.6728 5.6084 13.7519 5.7995 13.7519 5.99875C13.7519 6.19801 13.6728 6.38911 13.5319 6.53L13.5306 6.53063Z" fill="currentColor"/>
             </svg>
           </span>
 
-          <ul className=" flex items-center bg-white py-6 px-4 gap-6 absolute top-full left-0 mt-2 shadow-lg rounded-xl  z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+          <ul className="flex items-center bg-white py-6 px-4 gap-6 absolute top-full left-0 mt-2 shadow-lg rounded-xl  z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
             <li className="text-black p-2 rounded-xl transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2"><Link href="/style/casual">Casual</Link></li>
             <li className="text-black p-2 rounded-xl transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2"><Link href="/style/formal">Formal</Link></li>
             <li className="text-black p-2 rounded-xl transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2"><Link href="/style/party">Party</Link></li>
@@ -169,16 +174,25 @@ function Navbar() {
 
             <div className="bg-black opacity-10 w-full h-[0.06rem] mb-5 mt-4"></div>
               <ul className="space-y-5">
-                <li className="text-base font-normal opacity-60 flex justify-between items-center">
-                  Shop
-                  <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M6.53073 2.4694L11.5307 7.4694C11.6007 7.53908 11.6561 7.62187 11.694 7.71304C11.7318 7.8042 11.7513 7.90194 11.7513 8.00065C11.7513 8.09936 11.7318 8.1971 11.694 8.28827C11.6561 8.37943 11.6007 8.46222 11.5307 8.5319L6.53073 13.5319C6.38984 13.6728 6.19874 13.752 5.99948 13.752C5.80023 13.752 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0007C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8.00003L5.46761 3.53065C5.32671 3.38976 5.24756 3.19866 5.24756 2.9994C5.24756 2.80015 5.32671 2.60905 5.46761 2.46815C5.60851 2.32726 5.7996 2.2481 5.99886 2.2481C6.19812 2.2481 6.38921 2.32726 6.53011 2.46815L6.53073 2.4694Z" fill="black" fillOpacity="0.6"/>
-                    </svg>
-                  </span>
+                <li className="text-base font-normal opacity-60 flex flex-col" onClick={()=> setIsCategory(!isCategory)}>
+                  <div className="flex justify-between items-center" onClick={() => setIsCategory(!isCategory)}>
+                    Category
+                    <span className={`ml-2 transition-transform duration-300 ${isCategory ? "rotate-90" : ""}`}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M6.53073 2.4694L11.5307 7.4694C11.6007 7.53908 11.6561 7.62187 11.694 7.71304C11.7318 7.8042 11.7513 7.90194 11.7513 8.00065C11.7513 8.09936 11.7318 8.1971 11.694 8.28827C11.6561 8.37943 11.6007 8.46222 11.5307 8.5319L6.53073 13.5319C6.38984 13.6728 6.19874 13.752 5.99948 13.752C5.80023 13.752 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0007C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8.00003L5.46761 3.53065C5.32671 3.38976 5.24756 3.19866 5.24756 2.9994C5.24756 2.80015 5.32671 2.60905 5.46761 2.46815C5.60851 2.32726 5.7996 2.2481 5.99886 2.2481C6.19812 2.2481 6.38921 2.32726 6.53011 2.46815L6.53073 2.4694Z" fill="black" fillOpacity="0.6"/>
+                      </svg>
+                    </span>
+                  </div>
+
+                  <ul className={`flex flex-col justify-start rounded-xl transition-all duration-300 pt-2  ${isCategory ? "opacity-100 visible" : "opacity-0 invisible max-h-0 "}`}>
+                    <li className="text-black p-2" onClick={handleCloseMenu}><Link href="/style/casual">Casual</Link></li>
+                    <li className="text-black p-2" onClick={handleCloseMenu}><Link href="/style/formal">Formal</Link></li>
+                    <li className="text-black p-2" onClick={handleCloseMenu}><Link href="/style/party">Party</Link></li>
+                    <li className="text-black p-2" onClick={handleCloseMenu}><Link href="/style/gym">Gym</Link></li>
+                  </ul>
                 </li>
-                <li className="text-base font-normal opacity-60">On Scale</li>
-                <li className="text-base font-normal opacity-60">New Arrivals</li>
+                <li className="text-base font-normal opacity-60" onClick={handleCloseMenu}><Link href="/shop">Shop</Link></li>
+                <li className="text-base font-normal opacity-60" onClick={() => handleScrollToSection("newArrivals")}>New Arrivals</li>
                 <li className="text-base font-normal opacity-60">Brands</li>
               </ul>
           </div>
