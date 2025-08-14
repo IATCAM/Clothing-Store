@@ -91,7 +91,7 @@ function Navbar() {
       </div>
 
       <ul className='lg:flex items-center gap-3 hidden cursor-pointer relative'>
-        <li className='flex items-center text-black gap-1 lg:rounded-xl lg:p-2 relative group transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2'>
+        <li className='flex items-center text-black gap-1 lg:rounded-[3.87rem] lg:p-2 relative group transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-[3.87rem] hover:p-2'>
           Category
           <span className="transition-transform duration-300 group-hover:rotate-180">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -100,15 +100,15 @@ function Navbar() {
           </span>
 
           <ul className="flex items-center bg-white py-6 px-4 gap-6 absolute top-full left-0 mt-2 shadow-lg rounded-xl  z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-            <li className="text-black p-2 rounded-xl transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2"><Link href="/style/casual">Casual</Link></li>
-            <li className="text-black p-2 rounded-xl transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2"><Link href="/style/formal">Formal</Link></li>
-            <li className="text-black p-2 rounded-xl transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2"><Link href="/style/party">Party</Link></li>
-            <li className="text-black p-2 rounded-xl transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2"><Link href="/style/gym">Gym</Link></li>
+            <li className="text-black p-2 rounded-[3.87rem] transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-[3.87rem] hover:p-2"><Link href="/style/casual">Casual</Link></li>
+            <li className="text-black p-2 rounded-[3.87rem] transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-[3.87rem]hover:p-2"><Link href="/style/formal">Formal</Link></li>
+            <li className="text-black p-2 rounded-[3.87rem]transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-[3.87rem] hover:p-2"><Link href="/style/party">Party</Link></li>
+            <li className="text-black p-2 rounded-[3.87rem] transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-[3.87rem] hover:p-2"><Link href="/style/gym">Gym</Link></li>
           </ul>
         </li>
-        <li className="lg:rounded-xl lg:p-2 transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2"><Link href="/shop">Shop</Link></li>
-        <li className="lg:rounded-xl lg:p-2 transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2" onClick={() => handleScrollToSection("newArrivals")}>New Arrivals</li>
-        <li className="lg:rounded-xl lg:p-2 transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-xl hover:p-2">Brands</li>
+        <li className="lg:rounded-[3.87rem] lg:p-2 transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-[3.87rem] hover:p-2"><Link href="/shop">Shop</Link></li>
+        <li className="lg:rounded-[3.87rem] lg:p-2 transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-[3.87rem] hover:p-2" onClick={() => handleScrollToSection("newArrivals")}>New Arrivals</li>
+        <li className="lg:rounded-[3.87rem] lg:p-2 transition-colors duration-300 hover:bg-black hover:text-white hover:rounded-[3.87rem] hover:p-2">Brands</li>
       </ul>
 
       <div className='hidden lg:flex flex-grow'>
